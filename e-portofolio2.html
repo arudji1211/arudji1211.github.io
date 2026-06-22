@@ -1,0 +1,1668 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>E-Portfolio 2 - Arudji Hermatyar</title>
+    <style>
+      /* ----- VARIABEL CSS UNTUK TEMA ----- */
+      :root {
+        --bg-body: #e9f0e9;
+        --bg-card: #ffffff;
+        --bg-card-alt: #e9f0e9;
+        --text-primary: #383838;
+        --text-secondary: #5a7795;
+        --border-color: #d5dcd5;
+        --shadow-color: rgba(56, 56, 56, 0.05);
+        --shadow-hover: rgba(56, 56, 56, 0.1);
+        --nav-bg: #383838;
+        --nav-text: #e9f0e9;
+        --accent: #6e95bc;
+        --accent-dark: #5a7795;
+        --btn-bg: #6e95bc;
+        --btn-hover: #383838;
+        --footer-bg: #383838;
+        --footer-text: #e9f0e9;
+        --modal-bg: #ffffff;
+        --modal-overlay: rgba(56, 56, 56, 0.65);
+        --doc-placeholder-bg: #e9f0e9;
+        --badge-bg: #6e95bc;
+        --parallax-overlay: rgba(233, 240, 233, 0.85);
+        --highlight: #d5e8d5;
+        --theory-bg: #f0f4f0;
+      }
+
+      [data-theme="dark"] {
+        --bg-body: #1a1a1a;
+        --bg-card: #2d2d2d;
+        --bg-card-alt: #383838;
+        --text-primary: #e9f0e9;
+        --text-secondary: #a0b8c7;
+        --border-color: #4a4a4a;
+        --shadow-color: rgba(0, 0, 0, 0.2);
+        --shadow-hover: rgba(0, 0, 0, 0.4);
+        --nav-bg: #111111;
+        --nav-text: #e9f0e9;
+        --accent: #6e95bc;
+        --accent-dark: #5a7795;
+        --btn-bg: #6e95bc;
+        --btn-hover: #5a7795;
+        --footer-bg: #111111;
+        --footer-text: #a0b8c7;
+        --modal-bg: #2d2d2d;
+        --modal-overlay: rgba(0, 0, 0, 0.8);
+        --doc-placeholder-bg: #383838;
+        --badge-bg: #4a6a8a;
+        --parallax-overlay: rgba(26, 26, 26, 0.85);
+        --highlight: #2a4a3a;
+        --theory-bg: #2a2a2a;
+      }
+
+      /* ----- RESET & GLOBAL ----- */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        transition:
+          background-color 0.3s ease,
+          color 0.3s ease,
+          border-color 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: var(--text-primary);
+        background: var(--bg-body);
+        overflow-x: hidden;
+      }
+
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 30px;
+      }
+
+      section {
+        padding: 60px 0;
+        border-bottom: 1px solid var(--border-color);
+        position: relative;
+        z-index: 1;
+        opacity: 0;
+        transform: translateY(40px);
+        transition:
+          opacity 0.8s ease,
+          transform 0.8s ease;
+      }
+
+      section.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      section:last-of-type {
+        border-bottom: none;
+      }
+
+      h2 {
+        font-size: 2rem;
+        margin-bottom: 30px;
+        color: var(--text-primary);
+        border-left: 6px solid var(--accent);
+        padding-left: 16px;
+      }
+
+      h3 {
+        font-size: 1.3rem;
+        color: var(--text-primary);
+        margin-bottom: 12px;
+        margin-top: 8px;
+      }
+
+      h4 {
+        font-size: 1.1rem;
+        color: var(--text-primary);
+        margin-bottom: 6px;
+      }
+
+      /* ----- TOMBOL DARK MODE ----- */
+      .theme-toggle {
+        position: fixed;
+        bottom: 50px;
+        right: 20px;
+        z-index: 9999;
+        background: var(--bg-card);
+        color: var(--text-primary);
+        border: 2px solid var(--border-color);
+        border-radius: 50%;
+        width: 52px;
+        height: 52px;
+        font-size: 1.5rem;
+        cursor: pointer;
+        box-shadow: 0 4px 16px var(--shadow-color);
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .theme-toggle:hover {
+        transform: scale(1.08) rotate(8deg);
+        box-shadow: 0 8px 28px var(--shadow-hover);
+        border-color: var(--accent);
+      }
+
+      /* ----- NAVIGASI ----- */
+      nav {
+        background: var(--nav-bg);
+        padding: 14px 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 10px var(--shadow-color);
+      }
+
+      nav .container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 8px 24px;
+      }
+
+      nav a {
+        color: var(--nav-text);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.95rem;
+        padding: 6px 4px;
+        transition: 0.2s;
+        border-bottom: 2px solid transparent;
+      }
+
+      nav a:hover {
+        color: var(--accent);
+        border-bottom-color: var(--accent);
+      }
+
+      /* ----- BERANDA ----- */
+      #beranda {
+        text-align: center;
+        padding: 80px 0 70px;
+        background: var(--bg-body);
+        position: relative;
+        overflow: hidden;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 1;
+        transform: none;
+      }
+
+      #beranda::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" opacity="0.08"><path d="M0,400 Q300,200 600,400 T1200,400 L1200,800 L0,800 Z" fill="%236e95bc"/><path d="M0,500 Q400,300 800,500 T1200,500 L1200,800 L0,800 Z" fill="%235a7795"/><circle cx="200" cy="150" r="60" fill="%236e95bc" opacity="0.5"/><circle cx="900" cy="100" r="80" fill="%235a7795" opacity="0.4"/><circle cx="500" cy="250" r="40" fill="%236e95bc" opacity="0.3"/></svg>');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        z-index: 0;
+        transform: translateY(0);
+        will-change: transform;
+      }
+
+      #beranda .container {
+        position: relative;
+        z-index: 1;
+        background: var(--parallax-overlay);
+        padding: 40px 50px;
+        border-radius: 24px;
+        backdrop-filter: blur(2px);
+        border: 1px solid var(--border-color);
+        box-shadow: 0 8px 32px var(--shadow-color);
+      }
+
+      .foto-profil {
+        width: 160px;
+        height: 160px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid var(--accent);
+        box-shadow: 0 6px 18px var(--shadow-color);
+        margin-bottom: 16px;
+        background: var(--bg-card-alt);
+        animation: floatProfile 4s ease-in-out infinite;
+      }
+
+      @keyframes floatProfile {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-8px);
+        }
+      }
+
+      #beranda h1 {
+        font-size: 2.2rem;
+        color: var(--text-primary);
+        margin-bottom: 6px;
+      }
+
+      #beranda .subhead {
+        font-size: 1.2rem;
+        color: var(--text-secondary);
+        margin-bottom: 20px;
+      }
+
+      .kinetic-text {
+        display: inline-block;
+        animation: kineticPulse 3s ease-in-out infinite;
+      }
+
+      @keyframes kineticPulse {
+        0%,
+        100% {
+          transform: scale(1) rotate(0deg);
+          opacity: 1;
+        }
+        25% {
+          transform: scale(1.02) rotate(0.5deg);
+          opacity: 0.95;
+        }
+        75% {
+          transform: scale(0.98) rotate(-0.5deg);
+          opacity: 0.9;
+        }
+      }
+
+      .kinetic-text-2 {
+        display: inline-block;
+        animation: kineticSlide 4s ease-in-out infinite;
+      }
+
+      @keyframes kineticSlide {
+        0%,
+        100% {
+          transform: translateX(0) scale(1);
+        }
+        50% {
+          transform: translateX(4px) scale(1.01);
+        }
+      }
+
+      .kutipan {
+        font-size: 1.2rem;
+        font-style: italic;
+        color: var(--text-primary);
+        background: var(--bg-card);
+        display: inline-block;
+        padding: 12px 36px;
+        border-radius: 40px;
+        max-width: 700px;
+        margin: 0 auto;
+        box-shadow: 0 2px 8px var(--shadow-color);
+        border: 1px solid var(--border-color);
+        animation: kineticPulse 4s ease-in-out infinite;
+      }
+
+      .kutipan::before {
+        content: "“";
+        font-size: 1.8rem;
+        color: var(--accent);
+        margin-right: 4px;
+      }
+      .kutipan::after {
+        content: "”";
+        font-size: 1.8rem;
+        color: var(--accent);
+        margin-left: 4px;
+      }
+
+      /* ----- CARD UMUM ----- */
+      .card-white {
+        background: var(--bg-card);
+        padding: 30px 36px;
+        border-radius: 16px;
+        box-shadow: 0 4px 14px var(--shadow-color);
+        border: 1px solid var(--border-color);
+        transition:
+          transform 0.4s ease,
+          box-shadow 0.4s ease;
+      }
+
+      .card-white:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 32px var(--shadow-hover);
+      }
+
+      .card-white p {
+        color: var(--text-secondary);
+        font-size: 0.98rem;
+        line-height: 1.8;
+        margin-bottom: 10px;
+      }
+
+      .card-white ul {
+        padding-left: 22px;
+        color: var(--text-secondary);
+        font-size: 0.98rem;
+        line-height: 1.8;
+      }
+
+      .card-white strong {
+        color: var(--text-primary);
+      }
+
+      /* ----- REFLEKSI AKHIR PPL ----- */
+      .refleksi-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 24px;
+      }
+
+      .refleksi-item {
+        background: var(--bg-card-alt);
+        padding: 22px 24px;
+        border-radius: 12px;
+        border-top: 4px solid var(--accent);
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+
+      .refleksi-item:hover {
+        transform: translateY(-4px) scale(1.01);
+        box-shadow: 0 8px 24px var(--shadow-hover);
+      }
+
+      .refleksi-item .icon {
+        font-size: 2rem;
+        margin-bottom: 6px;
+        animation: kineticSlide 4s ease-in-out infinite;
+      }
+
+      .refleksi-item h4 {
+        color: var(--text-primary);
+        font-size: 1.05rem;
+        margin-bottom: 6px;
+      }
+
+      .refleksi-item p {
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+        line-height: 1.7;
+        margin: 0;
+      }
+
+      .refleksi-item ul {
+        padding-left: 18px;
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+        line-height: 1.8;
+        margin-top: 4px;
+      }
+
+      /* ----- FILOSOFI MENGAJAR ----- */
+      .filosofi-container {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      .filosofi-container .filosofi-paragraf {
+        background: var(--bg-card-alt);
+        padding: 24px 28px;
+        border-radius: 12px;
+        margin-bottom: 20px;
+        border-left: 4px solid var(--accent);
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+
+      .filosofi-container .filosofi-paragraf:hover {
+        transform: translateX(4px);
+        box-shadow: 0 4px 16px var(--shadow-hover);
+      }
+
+      .filosofi-container .filosofi-paragraf p {
+        color: var(--text-secondary);
+        font-size: 0.98rem;
+        line-height: 1.9;
+        margin: 0;
+      }
+
+      .filosofi-container .filosofi-paragraf strong {
+        color: var(--text-primary);
+      }
+
+      /* ----- LPTK & SEKOLAH ----- */
+      .lptk-grid,
+      .sekolah-grid {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 40px;
+        align-items: start;
+        background: var(--bg-card);
+        padding: 30px 36px;
+        border-radius: 16px;
+        box-shadow: 0 4px 14px var(--shadow-color);
+        border: 1px solid var(--border-color);
+        transition:
+          transform 0.4s ease,
+          box-shadow 0.4s ease;
+      }
+
+      .lptk-grid:hover,
+      .sekolah-grid:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 32px var(--shadow-hover);
+      }
+
+      .lptk-logo,
+      .sekolah-logo {
+        text-align: center;
+        padding: 20px;
+        background: var(--bg-card-alt);
+        border-radius: 16px;
+      }
+
+      .logo-uim,
+      .logo-sekolah {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid var(--accent);
+        margin-bottom: 12px;
+        transition: transform 0.5s ease;
+      }
+
+      .logo-uim:hover,
+      .logo-sekolah:hover {
+        transform: rotate(8deg) scale(1.05);
+      }
+
+      .lptk-logo h3,
+      .sekolah-logo h3 {
+        font-size: 1.3rem;
+        color: var(--text-primary);
+        margin-bottom: 4px;
+      }
+
+      .lptk-logo .lptk-alamat,
+      .sekolah-logo .sekolah-alamat {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        margin-bottom: 16px;
+      }
+
+      .lptk-info .lptk-item,
+      .sekolah-info .sekolah-item {
+        margin-bottom: 20px;
+      }
+
+      .lptk-info .lptk-item strong,
+      .sekolah-info .sekolah-item strong {
+        display: block;
+        color: var(--text-primary);
+        font-size: 1.05rem;
+        margin-bottom: 4px;
+        border-left: 4px solid var(--accent);
+        padding-left: 12px;
+      }
+
+      .lptk-info .lptk-item p,
+      .lptk-info .lptk-item li,
+      .sekolah-info .sekolah-item p,
+      .sekolah-info .sekolah-item li {
+        color: var(--text-secondary);
+        font-size: 0.98rem;
+        line-height: 1.7;
+      }
+
+      .lptk-info .lptk-item ul,
+      .sekolah-info .sekolah-item ul {
+        padding-left: 20px;
+        margin-top: 4px;
+      }
+
+      .lptk-map,
+      .sekolah-map {
+        margin-top: 20px;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid var(--border-color);
+        transition:
+          transform 0.4s ease,
+          box-shadow 0.4s ease;
+      }
+
+      .lptk-map:hover,
+      .sekolah-map:hover {
+        transform: scale(1.01);
+        box-shadow: 0 8px 24px var(--shadow-hover);
+      }
+
+      .lptk-map iframe,
+      .sekolah-map iframe {
+        width: 100%;
+        height: 300px;
+        border: 0;
+        display: block;
+      }
+
+      /* ----- ARTEFAK ----- */
+      .siklus-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+      }
+
+      .siklus-card {
+        background: var(--bg-card);
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 6px 20px var(--shadow-color);
+        transition:
+          transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+          box-shadow 0.4s ease,
+          border-color 0.3s ease;
+        cursor: pointer;
+        border: 1px solid var(--border-color);
+      }
+
+      .siklus-card:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 16px 48px var(--shadow-hover);
+        border-color: var(--accent);
+      }
+
+      .siklus-card .thumbnail {
+        height: 160px;
+        background: var(--bg-card-alt);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3.6rem;
+        color: var(--text-secondary);
+        font-weight: 300;
+        transition: transform 0.5s ease;
+      }
+
+      .siklus-card:hover .thumbnail {
+        transform: scale(1.05);
+      }
+
+      .siklus-card .card-body {
+        padding: 18px 20px 22px;
+      }
+
+      .siklus-card .card-body h3 {
+        font-size: 1.3rem;
+        color: var(--text-primary);
+        margin-bottom: 4px;
+      }
+
+      .siklus-card .card-body .badge {
+        display: inline-block;
+        background: var(--badge-bg);
+        color: #ffffff;
+        font-size: 0.7rem;
+        padding: 2px 14px;
+        border-radius: 20px;
+        letter-spacing: 0.4px;
+        margin-top: 6px;
+        transition: transform 0.3s ease;
+      }
+
+      .siklus-card:hover .badge {
+        transform: scale(1.05);
+      }
+
+      .siklus-card .card-body p {
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+        margin-top: 8px;
+      }
+
+      /* ----- MODAL ----- */
+      .modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--modal-overlay);
+        align-items: center;
+        justify-content: center;
+        z-index: 999;
+        padding: 20px;
+        backdrop-filter: blur(4px);
+        animation: fadeIn 0.3s ease;
+      }
+
+      .modal-overlay.active {
+        display: flex;
+      }
+
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      .modal-box {
+        background: var(--modal-bg);
+        max-width: 780px;
+        width: 100%;
+        max-height: 90vh;
+        overflow-y: auto;
+        border-radius: 20px;
+        padding: 32px 36px;
+        position: relative;
+        box-shadow: 0 20px 60px var(--shadow-color);
+        animation: modalPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        border: 1px solid var(--border-color);
+      }
+
+      @keyframes modalPop {
+        0% {
+          opacity: 0;
+          transform: scale(0.9) translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1) translateY(0);
+        }
+      }
+
+      .modal-box .close-modal {
+        position: sticky;
+        top: 0;
+        float: right;
+        background: var(--text-secondary);
+        color: #ffffff;
+        border: none;
+        font-size: 1.4rem;
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 10px;
+      }
+
+      .modal-box .close-modal:hover {
+        background: var(--text-primary);
+        transform: rotate(90deg) scale(1.1);
+      }
+
+      .modal-box h2 {
+        border-left-color: var(--accent);
+        margin-top: 0;
+        margin-bottom: 20px;
+      }
+
+      .modal-box .detail-item {
+        margin-bottom: 22px;
+      }
+
+      .modal-box .detail-item h4 {
+        font-size: 1.1rem;
+        color: var(--text-primary);
+        margin-bottom: 4px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .modal-box .detail-item p {
+        color: var(--text-secondary);
+        font-size: 0.98rem;
+        margin-bottom: 6px;
+      }
+
+      /* ----- DOKUMENTASI GALERI DI MODAL ----- */
+      .dokumentasi-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 12px;
+        margin-top: 10px;
+      }
+
+      .dokumentasi-gallery .dok-item {
+        border-radius: 10px;
+        overflow: hidden;
+        border: 1px solid var(--border-color);
+        aspect-ratio: 4 / 3;
+        background: var(--bg-card-alt);
+        transition: transform 0.3s ease;
+      }
+
+      .dokumentasi-gallery .dok-item:hover {
+        transform: scale(1.03);
+      }
+
+      .dokumentasi-gallery .dok-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .btn-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 4px;
+      }
+
+      /* ----- TOMBOL DOWNLOAD ----- */
+      .btn-download {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--btn-bg);
+        color: #ffffff;
+        padding: 8px 20px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: 0.3s ease;
+        border: none;
+        cursor: pointer;
+      }
+
+      .btn-download:hover {
+        background: var(--btn-hover);
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 0 6px 20px var(--shadow-hover);
+      }
+
+      .btn-download.pdf {
+        background: #c0392b;
+      }
+
+      .btn-download.pdf:hover {
+        background: #922b21;
+      }
+
+      .btn-download.ppt {
+        background: #d35400;
+      }
+
+      .btn-download.ppt:hover {
+        background: #a04000;
+      }
+
+      /* ----- FOOTER ----- */
+      footer {
+        background: var(--footer-bg);
+        color: var(--footer-text);
+        text-align: center;
+        padding: 40px 0;
+        font-size: 0.95rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      footer::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 200" opacity="0.05"><path d="M0,100 Q300,0 600,100 T1200,100 L1200,200 L0,200 Z" fill="%236e95bc"/><path d="M0,150 Q400,50 800,150 T1200,150 L1200,200 L0,200 Z" fill="%235a7795"/></svg>');
+        background-size: cover;
+        background-position: center bottom;
+        background-repeat: no-repeat;
+        z-index: 0;
+        transform: translateY(0);
+        will-change: transform;
+      }
+
+      footer .container {
+        position: relative;
+        z-index: 1;
+      }
+
+      footer span {
+        color: var(--accent);
+        display: inline-block;
+        animation: kineticPulse 2s ease-in-out infinite;
+      }
+
+      .credit {
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+        opacity: 0.7;
+        margin-top: 4px;
+        transition: opacity 0.3s ease;
+      }
+
+      .credit:hover {
+        opacity: 1;
+      }
+
+      .credit strong {
+        color: var(--accent);
+        font-weight: 600;
+      }
+
+      /* ----- RESPONSIVE ----- */
+      @media (max-width: 820px) {
+        .refleksi-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .lptk-grid,
+        .sekolah-grid {
+          grid-template-columns: 1fr;
+          gap: 24px;
+        }
+        .siklus-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        .container {
+          padding: 0 20px;
+        }
+        .card-white,
+        .lptk-grid,
+        .sekolah-grid {
+          padding: 20px;
+        }
+        .lptk-map iframe,
+        .sekolah-map iframe {
+          height: 220px;
+        }
+        #beranda .container {
+          padding: 30px 20px;
+        }
+        #beranda {
+          padding: 60px 0 50px;
+          min-height: auto;
+        }
+        .theme-toggle {
+          bottom: 30px;
+          right: 16px;
+          width: 46px;
+          height: 46px;
+          font-size: 1.3rem;
+        }
+        .filosofi-container .filosofi-paragraf {
+          padding: 18px 20px;
+        }
+        .dokumentasi-gallery {
+          grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        }
+      }
+
+      @media (max-width: 540px) {
+        .refleksi-grid {
+          grid-template-columns: 1fr;
+        }
+        .siklus-grid {
+          grid-template-columns: 1fr;
+        }
+        nav .container {
+          gap: 6px 12px;
+        }
+        nav a {
+          font-size: 0.75rem;
+          padding: 4px 2px;
+        }
+        #beranda h1 {
+          font-size: 1.6rem;
+        }
+        .modal-box {
+          padding: 24px 18px;
+        }
+        .btn-group {
+          flex-direction: column;
+        }
+        .container {
+          padding: 0 14px;
+        }
+        .card-white,
+        .lptk-grid,
+        .sekolah-grid {
+          padding: 16px;
+        }
+        #beranda .container {
+          padding: 20px 14px;
+        }
+        .foto-profil {
+          width: 120px;
+          height: 120px;
+        }
+        .theme-toggle {
+          bottom: 20px;
+          right: 12px;
+          width: 42px;
+          height: 42px;
+          font-size: 1.1rem;
+        }
+        .filosofi-container .filosofi-paragraf {
+          padding: 14px 16px;
+        }
+        .filosofi-container .filosofi-paragraf p {
+          font-size: 0.92rem;
+        }
+        .credit {
+          font-size: 0.7rem;
+        }
+        .dokumentasi-gallery {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ========== TOMBOL DARK MODE ========== -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle tema">
+      🌙
+    </button>
+
+    <!-- ========== NAVIGASI ========== -->
+    <nav>
+      <div class="container">
+        <a href="index.html">Beranda</a>
+        <a href="#refleksi">Refleksi PPL</a>
+        <a href="#filosofi">Filosofi</a>
+        <a href="#lptk">LPTK</a>
+        <a href="#sekolah">Sekolah PPL</a>
+        <a href="#artefak">Artefak</a>
+        <a href="e-portfolio1.html">EP 1</a>
+      </div>
+    </nav>
+
+    <!-- ========== BERANDA ========== -->
+    <section id="beranda">
+      <div class="container">
+        <img
+          src="assets/images/profile.jpeg"
+          alt="Foto Profil Arudji Hermatyar"
+          class="foto-profil"
+        />
+        <h1 class="kinetic-text">E-Portfolio 2</h1>
+        <p class="subhead kinetic-text-2">
+          Refleksi Akhir PPL Terbimbing — Arudji Hermatyar
+        </p>
+        <div class="kutipan">
+          "Pendidikan adalah seni membangun jembatan antara mimpi dan
+          kenyataan."
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== REFLEKSI AKHIR PPL ========== -->
+    <section id="refleksi">
+      <div class="container">
+        <h2>Refleksi Akhir PPL Terbimbing</h2>
+        <div class="card-white">
+          <p style="margin-bottom: 20px">
+            Berikut adalah refleksi mendalam saya selama mengikuti tahapan
+            <strong>PPL Terbimbing</strong> dari awal hingga akhir. Refleksi ini
+            mencakup pembelajaran yang saya peroleh, pengalaman menantang, serta
+            umpan balik dari guru pamong untuk perbaikan ke tahap PPL Mandiri.
+          </p>
+
+          <div class="refleksi-grid">
+            <!-- Poin 1: Apa yang dipelajari -->
+            <div class="refleksi-item">
+              <div class="icon">📖</div>
+              <h4>Apa yang Saya Pelajari?</h4>
+              <p>
+                Selama PPL Terbimbing, saya belajar banyak hal yang tidak pernah
+                saya dapatkan di bangku kuliah. Saya belajar bahwa
+                <strong>menjadi guru bukan hanya tentang mengajar</strong>,
+                tetapi juga tentang memahami karakteristik setiap siswa.
+              </p>
+              <ul>
+                <li>
+                  <strong>Manajemen Kelas:</strong> Menciptakan suasana belajar
+                  yang kondusif, mengelola siswa yang beragam karakter, dan
+                  menjaga fokus siswa.
+                </li>
+                <li>
+                  <strong>Adaptasi Teknologi:</strong> Menggunakan media
+                  pembelajaran digital yang tepat sesuai dengan kebutuhan siswa
+                  dan keterbatasan perangkat.
+                </li>
+                <li>
+                  <strong>Komunikasi Efektif:</strong> Menyampaikan materi
+                  dengan bahasa yang sederhana, jelas, dan mudah dipahami oleh
+                  siswa.
+                </li>
+                <li>
+                  <strong>Penilaian Otentik:</strong> Menyusun instrumen
+                  penilaian yang tidak hanya mengukur kognitif, tetapi juga
+                  afektif dan psikomotorik siswa.
+                </li>
+                <li>
+                  <strong>Kolaborasi:</strong> Bekerja sama dengan guru pamong,
+                  rekan sejawat, dan siswa secara harmonis.
+                </li>
+              </ul>
+            </div>
+
+            <!-- Poin 2: Pengalaman Menantang & Solusi -->
+            <div class="refleksi-item">
+              <div class="icon">⚡</div>
+              <h4>Pengalaman Menantang & Solusi</h4>
+              <p>
+                Selama PPL Terbimbing, saya menghadapi beberapa tantangan yang
+                menguji kemampuan saya sebagai calon guru.
+              </p>
+              <ul>
+                <li>
+                  <strong>Tantangan:</strong> Siswa dengan tingkat pemahaman
+                  yang heterogen.<br />
+                  <strong>Solusi:</strong> Menerapkan
+                  <strong>pembelajaran diferensiasi</strong> dengan tiga tingkat
+                  kesulitan tugas.
+                </li>
+                <li>
+                  <strong>Tantangan:</strong> Keterbatasan perangkat di
+                  laboratorium.<br />
+                  <strong>Solusi:</strong> Mengganti media dengan simulasi web
+                  ringan dan aktivitas <em>unplugged</em>.
+                </li>
+                <li>
+                  <strong>Tantangan:</strong> Manajemen waktu yang kurang
+                  tepat.<br />
+                  <strong>Solusi:</strong> Membuat
+                  <strong>rencana waktu</strong> lebih detail dan menyiapkan
+                  materi cadangan.
+                </li>
+              </ul>
+            </div>
+
+            <!-- Poin 3: Umpan Balik & Saran -->
+            <div class="refleksi-item">
+              <div class="icon">💬</div>
+              <h4>Umpan Balik & Saran</h4>
+              <p>
+                Dalam diskusi refleksi akhir, guru pamong memberikan beberapa
+                umpan balik yang sangat berharga:
+              </p>
+              <ul>
+                <li>
+                  <strong>Manajemen transisi:</strong> Membuat
+                  <strong>instruksi lebih jelas</strong> saat peralihan
+                  kegiatan.
+                </li>
+                <li>
+                  <strong>Variasi metode:</strong> Menambahkan lebih banyak
+                  <strong>metode aktif</strong> seperti <em>role-play</em> dan
+                  <em>game-based learning</em>.
+                </li>
+                <li>
+                  <strong>Aspek afektif:</strong> Memperhatikan
+                  <strong>penguatan positif</strong> untuk memotivasi siswa.
+                </li>
+                <li>
+                  <strong>Dokumentasi:</strong> Lebih mendokumentasikan proses
+                  pembelajaran sebagai bahan refleksi.
+                </li>
+              </ul>
+              <p style="margin-top: 8px">
+                Saya akan membawa semua saran ini sebagai
+                <strong>bekal berharga</strong> untuk PPL Mandiri.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== FILOSOFI MENGAJAR ========== -->
+    <section id="filosofi">
+      <div class="container">
+        <h2>Filosofi Mengajar</h2>
+        <div class="card-white">
+          <p style="margin-bottom: 16px">
+            Filosofi mengajar adalah cerminan dari
+            <strong>prinsip, keyakinan, dan nilai</strong> yang mendasari
+            praktik pengajaran saya selama PPL Terbimbing. Filosofi ini akan
+            menjadi <strong>ideologi</strong> yang saya pegang dalam perjalanan
+            menjadi guru profesional.
+          </p>
+
+          <div class="filosofi-container">
+            <!-- Paragraf 1 -->
+            <div class="filosofi-paragraf">
+              <p>
+                <strong
+                  >Pendidikan sebagai Proses Membangun Manusia Utuh.</strong
+                >
+                Saya meyakini bahwa pendidikan bukan sekadar transfer
+                pengetahuan dari guru ke siswa, melainkan proses
+                <strong>membangun manusia yang utuh</strong> — yang cerdas
+                secara intelektual, mulia secara akhlak, dan tangguh secara
+                mental. Filosofi ini saya adopsi dari pemikiran
+                <strong>Ki Hajar Dewantara</strong> tentang "pendidikan yang
+                menuntun kodrat anak" dan <strong>Paulo Freire</strong> tentang
+                "pendidikan sebagai praktik kebebasan". Saya percaya bahwa
+                setiap siswa memiliki potensi yang unik, dan tugas guru adalah
+                menjadi <strong>fasilitator</strong> yang membantu mereka
+                menemukan dan mengembangkan potensi tersebut.
+              </p>
+            </div>
+
+            <!-- Paragraf 2 -->
+            <div class="filosofi-paragraf">
+              <p>
+                <strong>Pembelajaran yang Bermakna dan Kontekstual.</strong>
+                Prinsip kedua saya adalah menciptakan
+                <strong>pembelajaran yang bermakna</strong> dengan menghubungkan
+                materi dengan kehidupan nyata siswa. Saya mengadopsi teori
+                <strong>Konstruktivisme</strong> dari
+                <strong>Jean Piaget</strong> dan
+                <strong>Lev Vygotsky</strong> yang menekankan bahwa pengetahuan
+                dibangun oleh siswa melalui interaksi aktif dengan lingkungan.
+                Selain itu, saya menerapkan pendekatan
+                <strong>PBL (Project Based Learning)</strong> karena saya
+                melihat bahwa siswa lebih antusias dan memahami konsep lebih
+                dalam ketika mereka belajar melalui proyek nyata. Seperti yang
+                dikatakan <strong>John Dewey</strong>,
+                <em
+                  >"Education is not preparation for life; education is life
+                  itself."</em
+                >
+              </p>
+            </div>
+
+            <!-- Paragraf 3 -->
+            <div class="filosofi-paragraf">
+              <p>
+                <strong>Guru sebagai Teladan dan Penggerak.</strong> Prinsip
+                ketiga yang saya pegang adalah bahwa guru adalah
+                <strong>teladan</strong> — bukan hanya mengajar dengan kata-
+                kata, tetapi juga dengan perbuatan. Saya terinspirasi oleh
+                konsep <strong>"Ing Ngarsa Sung Tuladha"</strong> dari Ki Hajar
+                Dewantara yang berarti "di depan memberi contoh". Saya juga
+                meyakini bahwa guru harus menjadi
+                <strong>penggerak</strong> yang mampu menginspirasi siswa untuk
+                terus belajar, bertanya, dan berkarya. Dalam hal ini, saya
+                mengacu pada teori <strong>Self-Determination</strong> dari
+                <strong>Deci & Ryan</strong> yang menekankan pentingnya otonomi,
+                kompetensi, dan keterhubungan dalam memotivasi siswa. Saya ingin
+                menjadi guru yang tidak hanya dicintai, tetapi juga dihormati
+                karena <strong>keteladanan</strong> dan
+                <strong>integritas</strong> saya dalam mengajar.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PROFIL LPTK ========== -->
+    <section id="lptk">
+      <div class="container">
+        <h2>Profil LPTK</h2>
+        <div class="lptk-grid">
+          <div class="lptk-logo">
+            <img
+              src="https://ui-avatars.com/api/?name=UIM&size=140&background=6E95BC&color=ffffff&bold=true"
+              alt="Logo UIM"
+              class="logo-uim"
+            />
+            <h3>Universitas Islam Makassar</h3>
+            <p class="lptk-alamat">
+              Jl. Perintis Kemerdekaan Km. 9, Makassar, Sulawesi Selatan
+            </p>
+            <p
+              style="
+                font-size: 0.85rem;
+                color: var(--text-secondary);
+                margin-top: 6px;
+              "
+            >
+              ⭐ Akreditasi Unggul
+            </p>
+          </div>
+          <div class="lptk-info">
+            <div class="lptk-item">
+              <strong>Visi</strong>
+              <p>
+                Menjadi Universitas Islam terkemuka, berkualitas, dan
+                berorientasi pada kepentingan bangsa dan negara berdasarkan
+                nilai-nilai ajaran Islam Ahlussunnah wal Jama'ah An-Nahdliyah.
+              </p>
+            </div>
+            <div class="lptk-item">
+              <strong>Misi</strong>
+              <ul>
+                <li>
+                  Menyelenggarakan pendidikan tinggi Islami yang berkualitas
+                  dalam rangka mencerdaskan dan memberdayakan kehidupan
+                  berkarakter kebangsaan untuk memelihara integritas nasional.
+                </li>
+                <li>
+                  Menghasilkan lulusan berjiwa pemimpin yang berakhlak,
+                  berbudaya, dan berkualitas berdasarkan jatidiri bangsa yang
+                  Islami.
+                </li>
+                <li>
+                  Melaksanakan penelitian yang menopang kemajuan pendidikan,
+                  ilmu pengetahuan, teknologi, seni dan nilai budaya bangsa
+                  serta kearifan lokal yang mandiri dan Islami.
+                </li>
+                <li>
+                  Meningkatkan pengabdian kepada masyarakat atas dasar tanggung
+                  jawab sosial demi kepentingan bersama.
+                </li>
+                <li>
+                  Melaksanakan kerjasama secara berkelanjutan dengan lembaga
+                  pendidikan, lembaga penelitian, pemerintah, dunia usaha dan
+                  masyarakat.
+                </li>
+              </ul>
+            </div>
+            <div class="lptk-item">
+              <strong>Program Studi</strong>
+              <p>
+                Pendidikan Matematika, Pendidikan Bahasa Indonesia, Pendidikan
+                Agama Islam, PGSD, dan Pendidikan Guru PAUD.
+              </p>
+            </div>
+            <div class="lptk-map">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15899.408318542686!2d119.468977!3d-5.140462!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dbefd01427b7afb%3A0x8f9c805e18f2422d!2sMakassar%20Islamic%20University!5e0!3m2!1sen!2sid!4v1710000000000"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              >
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PROFIL SEKOLAH PPL ========== -->
+    <section id="sekolah">
+      <div class="container">
+        <h2>Profil Sekolah PPL</h2>
+        <div class="sekolah-grid">
+          <div class="sekolah-logo">
+            <img
+              src="https://ui-avatars.com/api/?name=SMK&size=140&background=6E95BC&color=ffffff&bold=true"
+              alt="Logo SMK Mutiara Ilmu"
+              class="logo-sekolah"
+            />
+            <h3>SMK Mutiara Ilmu</h3>
+            <p class="sekolah-alamat">
+              Jl. Pendidikan No. 123, Makassar, Sulawesi Selatan
+            </p>
+            <p
+              style="
+                font-size: 0.85rem;
+                color: var(--text-secondary);
+                margin-top: 6px;
+              "
+            >
+              🏫 Akreditasi A
+            </p>
+          </div>
+          <div class="sekolah-info">
+            <div class="sekolah-item">
+              <strong>Visi</strong>
+              <p>Sekolah Berkarakter, Unggul, dan Terdepan</p>
+            </div>
+            <div class="sekolah-item">
+              <strong>Misi</strong>
+              <ul>
+                <li>
+                  Menghasilkan SDM tingkat menengah yang menguasai teknologi
+                  komputer, siap pakai dalam dunia kerja, mandiri, proaktif, dan
+                  produktif.
+                </li>
+                <li>
+                  Menghasilkan SDM tingkat menengah yang memiliki kompetensi
+                  ilmu pengetahuan komputer, kompetensi sosial, dan kompetensi
+                  pribadi yang baik.
+                </li>
+                <li>
+                  Menghasilkan SDM yang berakhlak mulia, cerdas, dan berdaya
+                  saing tinggi.
+                </li>
+              </ul>
+            </div>
+            <div class="sekolah-item">
+              <strong>Program Keahlian</strong>
+              <p>
+                Teknik Komputer dan Jaringan (TKJ), Desain Komunikasi Visual
+                (DKV), dan Rekayasa Perangkat Lunak (RPL).
+              </p>
+            </div>
+            <div class="sekolah-map">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15899.408318542686!2d119.468977!3d-5.140462!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dbefd01427b7afb%3A0x8f9c805e18f2422d!2sMakassar%20Islamic%20University!5e0!3m2!1sen!2sid!4v1710000000000"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              >
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== ARTEFAK PEMBELAJARAN ========== -->
+    <section id="artefak">
+      <div class="container">
+        <h2>Artefak Pembelajaran</h2>
+        <p style="margin-bottom: 24px; color: var(--text-secondary)">
+          Klik pada setiap siklus untuk melihat detail artefak.
+        </p>
+
+        <div class="siklus-grid">
+          <div class="siklus-card" data-siklus="1">
+            <div class="thumbnail">📘</div>
+            <div class="card-body">
+              <h3>Siklus 1</h3>
+              <span class="badge">Klik untuk detail</span>
+              <p>RPP, media, hasil kerja siswa & dokumentasi</p>
+            </div>
+          </div>
+          <div class="siklus-card" data-siklus="2">
+            <div class="thumbnail">📙</div>
+            <div class="card-body">
+              <h3>Siklus 2</h3>
+              <span class="badge">Klik untuk detail</span>
+              <p>RPP, media, hasil kerja siswa & dokumentasi</p>
+            </div>
+          </div>
+          <div class="siklus-card" data-siklus="3">
+            <div class="thumbnail">📗</div>
+            <div class="card-body">
+              <h3>Siklus 3</h3>
+              <span class="badge">Klik untuk detail</span>
+              <p>RPP, media, hasil kerja siswa & dokumentasi</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer>
+      <div class="container">
+        <div>&copy; 2026 E-Portfolio 2 — Arudji Hermatyar</div>
+        <div class="credit">🎨 Color palette by <strong>shyashya</strong></div>
+      </div>
+    </footer>
+
+    <!-- ========== MODAL ========== -->
+    <div class="modal-overlay" id="modalDetail">
+      <div class="modal-box">
+        <button class="close-modal" id="closeModal">✕</button>
+        <h2 id="modalTitle">Siklus 1</h2>
+
+        <div class="detail-item">
+          <h4>📄 RPP / Modul Ajar</h4>
+          <p id="modalRpp">Deskripsi RPP akan muncul di sini.</p>
+          <div class="btn-group">
+            <a href="#" class="btn-download pdf" id="btnRpp" target="_blank">
+              ⬇️ Download RPP (PDF)
+            </a>
+          </div>
+        </div>
+
+        <div class="detail-item">
+          <h4>🖥️ Media Pembelajaran</h4>
+          <p id="modalMedia">Deskripsi media akan muncul di sini.</p>
+          <div class="btn-group">
+            <a href="#" class="btn-download ppt" id="btnMedia" target="_blank">
+              ⬇️ Download Media (PPT)
+            </a>
+          </div>
+        </div>
+
+        <div class="detail-item">
+          <h4>📝 Hasil Kerja Siswa</h4>
+          <p id="modalHasil">
+            Deskripsi hasil kerja siswa akan muncul di sini.
+          </p>
+        </div>
+
+        <div class="detail-item">
+          <h4>📸 Dokumentasi Mengajar</h4>
+          <p id="modalDokumentasi">
+            Deskripsi dokumentasi akan muncul di sini.
+          </p>
+          <div class="dokumentasi-gallery" id="dokumentasiGallery">
+            <!-- Gambar akan diisi oleh JavaScript -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== JAVASCRIPT ========== -->
+    <script>
+      (function () {
+        // ----- DARK MODE -----
+        const themeToggle = document.getElementById("themeToggle");
+        const htmlElement = document.documentElement;
+
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme === "dark") {
+          htmlElement.setAttribute("data-theme", "dark");
+          themeToggle.textContent = "☀️";
+        } else {
+          htmlElement.removeAttribute("data-theme");
+          themeToggle.textContent = "🌙";
+        }
+
+        themeToggle.addEventListener("click", function () {
+          const isDark = htmlElement.getAttribute("data-theme") === "dark";
+          if (isDark) {
+            htmlElement.removeAttribute("data-theme");
+            localStorage.setItem("theme", "light");
+            themeToggle.textContent = "🌙";
+          } else {
+            htmlElement.setAttribute("data-theme", "dark");
+            localStorage.setItem("theme", "dark");
+            themeToggle.textContent = "☀️";
+          }
+        });
+
+        // ----- PARALLAX -----
+        const beranda = document.getElementById("beranda");
+        const footer = document.querySelector("footer");
+
+        function updateParallax() {
+          const scrollY = window.scrollY;
+          if (beranda) {
+            const speed = 0.4;
+            const yPos = -(scrollY * speed);
+            beranda.style.setProperty(
+              "background-position",
+              `center ${yPos}px`,
+            );
+          }
+          if (footer) {
+            const footerOffset = footer.offsetTop;
+            const footerScroll = Math.max(
+              0,
+              scrollY - footerOffset + window.innerHeight,
+            );
+            const speed = 0.3;
+            const yPos = -(footerScroll * speed);
+            footer.style.setProperty("background-position", `center ${yPos}px`);
+          }
+        }
+
+        let ticking = false;
+        window.addEventListener("scroll", function () {
+          if (!ticking) {
+            window.requestAnimationFrame(function () {
+              updateParallax();
+              ticking = false;
+            });
+            ticking = true;
+          }
+        });
+        window.addEventListener("load", updateParallax);
+
+        // ----- SCROLL-TRIGGERED ANIMATIONS -----
+        const sections = document.querySelectorAll("section:not(#beranda)");
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+              }
+            });
+          },
+          {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px",
+          },
+        );
+
+        sections.forEach((section) => {
+          observer.observe(section);
+        });
+
+        // ----- DATA SIKLUS & MODAL -----
+        const dataSiklus = {
+          1: {
+            title: "Siklus 1 — Eksplorasi Konsep Dasar",
+            rpp: "RPP Siklus 1: Pendekatan saintifik dengan metode diskusi dan eksperimen sederhana. Terintegrasi nilai karakter.",
+            rppLink:
+              "https://drive.google.com/file/d/1HwTeEGdBnYZ-3xdOqOKvwQzC_EAhmi4w/view?usp=sharing",
+            media:
+              "Media: Video animasi interaktif + slide presentasi + LKPD digital.",
+            mediaLink:
+              "https://drive.google.com/file/d/1HwTeEGdBnYZ-3xdOqOKvwQzC_EAhmi4w/view?usp=sharing",
+            hasil:
+              "Hasil siswa: 90% tuntas KKM, dengan rata-rata 82. Terjadi peningkatan minat belajar.",
+            dokumentasi:
+              "Dokumentasi: Foto saat siswa melakukan praktik kelompok dan presentasi hasil.",
+            images: ["s1-1.jpeg", "s1-2.jpeg"],
+          },
+          2: {
+            title: "Siklus 2 — Penguatan & Kolaborasi",
+            rpp: "RPP Siklus 2: Project Based Learning (PBL) dengan tema kewirausahaan sosial. Berbasis masalah nyata.",
+            rppLink:
+              "https://drive.google.com/file/d/1rP3JJ59gZDjB4h68raJ7zOHum5gdt-7c/view?usp=sharing",
+            media:
+              "Media: Video case study, template proyek, dan aplikasi canva untuk presentasi.",
+            mediaLink:
+              "https://drive.google.com/file/d/1NmCEv1VK1FE1Dl6sgYP-fLORAa_P7si8/view?usp=drive_link",
+            hasil:
+              "Hasil siswa: 95% tuntas KKM, rata-rata 88. Kreativitas dan kerja tim meningkat.",
+            dokumentasi:
+              "Dokumentasi: Foto saat bimbingan proyek dan sesi presentasi final.",
+            images: ["s2-1.jpeg", "s2-2.jpeg"],
+          },
+          3: {
+            title: "Siklus 3 — Refleksi & Aksi Nyata",
+            rpp: "RPP Siklus 3: Pembelajaran berdiferensiasi dengan pendekatan budaya lokal. Menekankan pada refleksi.",
+            rppLink:
+              "https://drive.google.com/file/d/16JIeuFDBEHahSxXMAvRaTsaX-INaR798/view?usp=sharing",
+            media:
+              "Media: Modul cetak + video dokumenter lokal + platform kuis interaktif.",
+            mediaLink:
+              "https://docs.google.com/presentation/d/1bukgWw4l2K0VZdZBvyhoJnpaVbzpFchy/edit?usp=sharing&ouid=113821420341804596967&rtpof=true&sd=true",
+            hasil:
+              "Hasil siswa: 100% tuntas KKM, rata-rata 92. Siswa mampu mengaitkan materi dengan kehidupan.",
+            dokumentasi:
+              "Dokumentasi: Foto kegiatan refleksi dan pameran hasil proyek.",
+            images: ["s3-1.jpeg", "s3-2.jpeg"],
+          },
+        };
+
+        const cards = document.querySelectorAll(".siklus-card");
+        const modal = document.getElementById("modalDetail");
+        const closeBtn = document.getElementById("closeModal");
+        const modalTitle = document.getElementById("modalTitle");
+        const modalRpp = document.getElementById("modalRpp");
+        const modalMedia = document.getElementById("modalMedia");
+        const modalHasil = document.getElementById("modalHasil");
+        const modalDokumentasi = document.getElementById("modalDokumentasi");
+        const btnRpp = document.getElementById("btnRpp");
+        const btnMedia = document.getElementById("btnMedia");
+        const gallery = document.getElementById("dokumentasiGallery");
+
+        function openModal(siklusId) {
+          const data = dataSiklus[siklusId];
+          if (!data) return;
+
+          modalTitle.textContent = data.title;
+          modalRpp.textContent = data.rpp;
+          modalMedia.textContent = data.media;
+          modalHasil.textContent = data.hasil;
+          modalDokumentasi.textContent = data.dokumentasi;
+          btnRpp.href = data.rppLink;
+          btnMedia.href = data.mediaLink;
+
+          // Load dokumentasi images
+          if (data.images && data.images.length > 0) {
+            let html = "";
+            data.images.forEach((img) => {
+              html += `
+                <div class="dok-item">
+                  <img src="assets/images/${img}" alt="Dokumentasi" loading="lazy" />
+                </div>
+              `;
+            });
+            gallery.innerHTML = html;
+          } else {
+            gallery.innerHTML =
+              '<p style="color: var(--text-secondary); font-size:0.9rem;">Belum ada dokumentasi.</p>';
+          }
+
+          modal.classList.add("active");
+          document.body.style.overflow = "hidden";
+        }
+
+        function closeModal() {
+          modal.classList.remove("active");
+          document.body.style.overflow = "";
+        }
+
+        cards.forEach((card) => {
+          card.addEventListener("click", function () {
+            const siklus = this.getAttribute("data-siklus");
+            openModal(siklus);
+          });
+        });
+
+        closeBtn.addEventListener("click", closeModal);
+        modal.addEventListener("click", function (e) {
+          if (e.target === this) closeModal();
+        });
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape" && modal.classList.contains("active"))
+            closeModal();
+        });
+      })();
+    </script>
+  </body>
+</html>
