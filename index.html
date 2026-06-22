@@ -93,20 +93,25 @@
         border-bottom: 1px solid var(--border-color);
         position: relative;
         z-index: 1;
+        /* Tidak ada opacity: 0 atau transform — tampil langsung */
+      }
+
+      section:last-of-type {
+        border-bottom: none;
+      }
+
+      /* Efek fade-in tetap ada, tapi dikelola oleh JavaScript */
+      section.fade-in {
         opacity: 0;
-        transform: translateY(40px);
+        transform: translateY(30px);
         transition:
           opacity 0.8s ease,
           transform 0.8s ease;
       }
 
-      section.visible {
+      section.fade-in.visible {
         opacity: 1;
         transform: translateY(0);
-      }
-
-      section:last-of-type {
-        border-bottom: none;
       }
 
       h2 {
@@ -200,8 +205,6 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        opacity: 1;
-        transform: none;
       }
 
       #beranda::before {
@@ -876,7 +879,7 @@
     </section>
 
     <!-- ========== PROFIL MAHASISWA ========== -->
-    <section id="profil-mahasiswa">
+    <section id="profil-mahasiswa" class="fade-in">
       <div class="container">
         <h2>Profil Mahasiswa</h2>
         <div class="card-white">
@@ -941,7 +944,7 @@
     </section>
 
     <!-- ========== ANALISIS ARTEFAK ========== -->
-    <section id="analisis">
+    <section id="analisis" class="fade-in">
       <div class="container">
         <h2>Analisis Artefak Pembelajaran</h2>
         <p style="margin-bottom: 24px; color: var(--text-secondary)">
@@ -1379,7 +1382,7 @@
     </section>
 
     <!-- ========== PENILAIAN GURU PAMONG ========== -->
-    <section id="penilaian">
+    <section id="penilaian" class="fade-in">
       <div class="container">
         <h2>Penilaian Guru Pamong</h2>
         <p style="margin-bottom: 24px; color: var(--text-secondary)">
@@ -1417,7 +1420,7 @@
     </section>
 
     <!-- ========== MODEL GURU YANG DITUJU ========== -->
-    <section id="model-guru">
+    <section id="model-guru" class="fade-in">
       <div class="container">
         <h2>Model Guru yang Dituju</h2>
         <div class="card-white">
@@ -1560,8 +1563,8 @@
         });
         window.addEventListener("load", updateParallax);
 
-        // ----- SCROLL-TRIGGERED ANIMATIONS -----
-        const sections = document.querySelectorAll("section:not(#beranda)");
+        // ----- SCROLL-TRIGGERED ANIMATIONS (FIXED) -----
+        const fadeElements = document.querySelectorAll(".fade-in");
 
         const observer = new IntersectionObserver(
           (entries) => {
@@ -1572,14 +1575,25 @@
             });
           },
           {
-            threshold: 0.1,
-            rootMargin: "0px 0px -50px 0px",
+            threshold: 0.15,
+            rootMargin: "0px 0px -30px 0px",
           },
         );
 
-        sections.forEach((section) => {
-          observer.observe(section);
+        fadeElements.forEach((el) => {
+          observer.observe(el);
         });
+
+        // Jika ada yang sudah terlihat di awal, langsung tampilkan
+        setTimeout(() => {
+          fadeElements.forEach((el) => {
+            const rect = el.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            if (rect.top < windowHeight - 100) {
+              el.classList.add("visible");
+            }
+          });
+        }, 100);
       })();
     </script>
   </body>
