@@ -1,0 +1,608 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>E-Portfolio UAS PPLM | Arudji Hermatyar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Work+Sans:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              uim: "#006d45",
+              uimlight: "#e6f4ef",
+              uimhover: "#005234",
+            },
+            fontFamily: {
+              sans: ["DM Sans", "sans-serif"],
+              heading: ["Work Sans", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background-color: #ffffff;
+        color: #333333;
+      }
+      .reveal {
+        opacity: 0;
+        transform: translateY(20px);
+        transition:
+          opacity 0.6s ease-out,
+          transform 0.6s ease-out;
+      }
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .tab-btn {
+        border-bottom: 3px solid transparent;
+        transition: all 0.3s ease;
+      }
+      .tab-btn.active {
+        border-bottom-color: #006d45;
+        color: #006d45;
+        font-weight: 700;
+      }
+      .tab-content {
+        display: none;
+      }
+      .tab-content.active {
+        display: block;
+        animation: fadeIn 0.4s ease-out;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body class="font-sans antialiased">
+    <!-- HEADER -->
+    <header
+      class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-200 shadow-sm"
+    >
+      <div
+        class="max-w-6xl mx-auto px-4 h-20 flex items-center justify-between"
+      >
+        <div class="flex items-center gap-3">
+          <div
+            class="w-10 h-10 bg-uimlight border-2 border-uim rounded-xl flex items-center justify-center overflow-hidden"
+          >
+            <!-- Ganti dengan logo UIM asli -->
+            <img
+              src="LOGO_UIM.png"
+              alt="Logo UIM"
+              class="w-full h-full object-contain p-1"
+            />
+          </div>
+          <div>
+            <h1 class="font-heading font-bold text-uim text-lg leading-tight">
+              ARUDJI HERMATYAR, S.Kom
+            </h1>
+            <p class="text-sm text-gray-500">
+              PPG Informatika | NIM: 25086085007
+            </p>
+          </div>
+        </div>
+        <div class="hidden md:block text-sm font-medium text-gray-500">
+          E-Portfolio UAS PPLM
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-12">
+      <!-- NAVIGASI TAB -->
+      <div class="border-b border-gray-200 mb-8 overflow-x-auto">
+        <div class="flex min-w-max gap-2" role="tablist">
+          <button
+            class="tab-btn active px-5 py-4 text-gray-600 font-medium text-sm"
+            data-target="tab-beranda"
+          >
+            1. Beranda
+          </button>
+          <button
+            class="tab-btn px-5 py-4 text-gray-600 font-medium text-sm"
+            data-target="tab-rancangan"
+          >
+            2. Rancangan & Media
+          </button>
+          <button
+            class="tab-btn px-5 py-4 text-gray-600 font-medium text-sm"
+            data-target="tab-video"
+          >
+            3. Video Praktik
+          </button>
+          <button
+            class="tab-btn px-5 py-4 text-gray-600 font-medium text-sm"
+            data-target="tab-refleksi"
+          >
+            4. Refleksi Akhir
+          </button>
+        </div>
+      </div>
+
+      <!-- KONTEN TAB -->
+      <div>
+        <!-- TAB 1: BERANDA -->
+        <div id="tab-beranda" class="tab-content active reveal">
+          <!-- Profil Hero -->
+          <div
+            class="bg-gray-50 border border-gray-200 rounded-2xl p-8 md:p-12 shadow-sm flex flex-col md:flex-row items-center md:items-start gap-8 mb-10"
+          >
+            <div class="flex-shrink-0">
+              <img
+                src="profile.jpeg"
+                alt="Foto Arudji Hermatyar"
+                class="w-40 h-40 md:w-48 md:h-48 object-cover rounded-full border-4 border-white shadow-lg"
+              />
+            </div>
+            <div class="text-center md:text-left flex-grow">
+              <span
+                class="inline-block bg-uimlight text-uim text-xs font-bold px-3 py-1 rounded-full mb-3 uppercase tracking-wider"
+                >Calon Guru Profesional</span
+              >
+              <h2 class="text-3xl font-heading font-bold text-gray-900 mb-2">
+                Arudji Hermatyar, S.Kom
+              </h2>
+              <p class="text-gray-600 mb-4 font-medium">
+                Mahasiswa PPG Prajabatan Informatika | Universitas Islam
+                Makassar
+              </p>
+
+              <div class="text-sm text-gray-600 mb-6 space-y-1">
+                <p><strong>Sekolah PPL:</strong> SMAN 22 Makassar</p>
+                <p><strong>Guru Pamong:</strong> Syahruni, S.Kom., M.Pd.</p>
+                <p>
+                  <strong>Dosen Pembimbing:</strong> Dr. Sitti Nurjannah, M.Pd.
+                </p>
+              </div>
+
+              <!-- Kontak (Placeholder) -->
+              <div class="flex flex-wrap justify-center md:justify-start gap-3">
+                <a
+                  href="#"
+                  class="inline-flex items-center gap-2 bg-uim text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-uimhover transition"
+                  ><i data-lucide="mail" class="w-4 h-4"></i> Email</a
+                >
+                <a
+                  href="#"
+                  class="inline-flex items-center gap-2 border border-gray-300 text-gray-700 px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-50 transition"
+                  ><i data-lucide="phone" class="w-4 h-4"></i> WhatsApp</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Visi Misi & Pengantar -->
+          <div class="grid md:grid-cols-3 gap-6">
+            <div
+              class="md:col-span-2 bg-white p-6 rounded-xl border border-gray-200 shadow-sm"
+            >
+              <h3 class="text-xl font-heading font-bold text-uim mb-3">
+                Pengantar E-Portfolio
+              </h3>
+              <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                Selamat datang di E-Portfolio UAS Praktik Pengalaman Lapangan
+                (PPL) Mandiri saya. Halaman ini mendokumentasikan hasil praktik
+                mengajar terbaik saya pada materi Percabangan Bertingkat (Elif)
+                menggunakan Python. Melalui portofolio ini, saya menyajikan
+                artifak pembelajaran, analisis mendalam, serta refleksi diri
+                sebagai bentuk komitmen saya untuk terus tumbuh menjadi pendidik
+                yang profesional.
+              </p>
+              <h3 class="text-xl font-heading font-bold text-uim mb-3 mt-6">
+                Filosofi & Visi Mengajar
+              </h3>
+              <p class="text-gray-600 text-sm leading-relaxed">
+                Saya meyakini filosofi Ki Hadjar Dewantara bahwa guru adalah
+                <i>pamong</i> yang bertugas menuntun kodrat alam dan kodrat
+                zaman murid. Visi saya adalah menjadi pendidik Informatika yang
+                mampu membangun logika berpikir kritis murid, menciptakan
+                pembelajaran yang inklusif, dan mengintegrasikan nilai-nilai
+                Pancasila dalam era digital.
+              </p>
+            </div>
+            <div class="bg-uim p-6 rounded-xl shadow-sm text-white">
+              <h3
+                class="text-xl font-heading font-bold mb-4 flex items-center gap-2"
+              >
+                <i data-lucide="target" class="w-5 h-5"></i> Misi Saya
+              </h3>
+              <ul class="space-y-3 text-sm text-uimlight">
+                <li class="flex items-start gap-2">
+                  <i
+                    data-lucide="check-circle"
+                    class="w-4 h-4 mt-0.5 flex-shrink-0 text-white"
+                  ></i>
+                  Menerapkan pembelajaran berdiferensiasi berbasis proyek.
+                </li>
+                <li class="flex items-start gap-2">
+                  <i
+                    data-lucide="check-circle"
+                    class="w-4 h-4 mt-0.5 flex-shrink-0 text-white"
+                  ></i>
+                  Menciptakan lingkungan kelas yang aman untuk bereksperimen dan
+                  gagal.
+                </li>
+                <li class="flex items-start gap-2">
+                  <i
+                    data-lucide="check-circle"
+                    class="w-4 h-4 mt-0.5 flex-shrink-0 text-white"
+                  ></i>
+                  Menjadi teladan dalam penggunaan teknologi secara bijak.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 2: RANCANGAN & MEDIA -->
+        <div id="tab-rancangan" class="tab-content reveal">
+          <!-- ANALISIS RANCANGAN -->
+          <div
+            class="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm mb-6"
+          >
+            <h2 class="text-2xl font-heading font-bold text-uim mb-4">
+              Analisis Rancangan/Perencanaan Pembelajaran
+            </h2>
+            <div class="prose max-w-none text-gray-600 space-y-4">
+              <p>
+                <strong>Konteks & Tujuan:</strong> Modul Ajar ini dirancang
+                untuk kelas XII SMAN 22 Makassar pada materi Percabangan Elif
+                (If-Elif-Else) dalam Python. Tujuannya agar murid mampu menyusun
+                logika bertingkat untuk menyelesaikan studi kasus penentuan
+                predikat nilai.
+              </p>
+              <p>
+                <strong>Kelebihan:</strong> Modul ini mengadopsi model
+                <i>Problem-Based Learning</i> (PBL) dan
+                <i>Experiential Learning</i>. Alur pembelajarannya sangat logis:
+                dimulai dari apersepsi (mengulang if-else), penjelasan konsep
+                baru, praktik <i>live coding</i>, hingga modifikasi program
+                secara mandiri. Asesmen dirancang formatif (observasi praktik)
+                dan sumatif (soal uraian).
+              </p>
+              <p>
+                <strong>Kekurangan:</strong> Alokasi waktu 3 JP (120 menit)
+                sangat padat. Fase 3 (Praktik Siswa) memakan waktu 50 menit,
+                sehingga guru harus sangat sigap membimbing murid yang mengalami
+                <i>error</i> indentasi atau tipe data agar tidak melebihi waktu
+                yang ditentukan.
+              </p>
+              <p>
+                <strong>Kajian Teori:</strong> Rancangan ini mengimplementasikan
+                prinsip <i>Backward Design</i> (UbD) yang dipelajari pada mata
+                kuliah Pembelajaran Mendalam, di mana tujuan pembelajaran dan
+                asesmen ditetapkan sebelum merancang aktivitas. Selain itu,
+                struktur materi yang berjenjang mencerminkan Taksonomi Bloom (C2
+                pemahaman hingga C3 penerapan kode).
+              </p>
+            </div>
+          </div>
+
+          <!-- ANALISIS MEDIA -->
+          <div
+            class="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm mb-6"
+          >
+            <h2 class="text-2xl font-heading font-bold text-uim mb-4">
+              Analisis Media Pembelajaran (PPT Elif)
+            </h2>
+            <div class="prose max-w-none text-gray-600 space-y-4">
+              <p>
+                <strong>Konteks & Tujuan:</strong> Media presentasi (PPT)
+                dirancang untuk memvisualisasikan konsep abstrak percabangan
+                bertingkat. Media ini menggunakan analogi lampu lalu lintas
+                (Traffic Light) dan robot untuk menjelaskan alur keputusan.
+              </p>
+              <p>
+                <strong>Kelebihan:</strong> Desain visual sangat modern dan
+                tidak monoton. Penggunaan analogi konkret (lampu lalu lintas)
+                sangat membantu siswa memahami konsep logika sebelum masuk ke
+                sintaks. Adanya "Aturan Emas" dan perbandingan "Logika Salah vs
+                Logika Benar" sangat efektif mencegah miskonsepsi urutan
+                kondisi.
+              </p>
+              <p>
+                <strong>Kekurangan:</strong> PPT berisi banyak teks penjelasan
+                detail. Jika guru hanya membacakan slide, siswa bisa kehilangan
+                fokus. Diperlukan interaksi aktif (tanya jawab) saat menampilkan
+                slide agar siswa tetap terlibat.
+              </p>
+              <p>
+                <strong>Kajian Teori:</strong> Media ini menerapkan prinsip
+                <i>Cognitive Load Theory</i> dengan memecah informasi kompleks
+                menjadi bagian-bagian kecil (chunking) yang mudah dicerna.
+                Penggunaan analogi sejalan dengan Teori Konstruktivisme, di mana
+                murid membangun pemahaman baru berdasarkan pengalaman nyata
+                (lampu lalu lintas).
+              </p>
+            </div>
+          </div>
+
+          <!-- LAMPIRAN DRIVE -->
+          <div class="grid md:grid-cols-2 gap-4">
+            <a
+              href="LINK_DRIVE_MODUL"
+              target="_blank"
+              class="group block bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition"
+            >
+              <div
+                class="bg-red-50 h-40 flex items-center justify-center border-b border-gray-100"
+              >
+                <i
+                  data-lucide="file-text"
+                  class="w-16 h-16 text-red-500 group-hover:scale-110 transition"
+                ></i>
+              </div>
+              <div class="p-4 flex justify-between items-center">
+                <div>
+                  <p class="font-bold text-gray-800">Modul Ajar (RPP) Elif</p>
+                  <p class="text-xs text-gray-500">
+                    PDF Document (Google Drive)
+                  </p>
+                </div>
+                <i
+                  data-lucide="external-link"
+                  class="w-5 h-5 text-gray-400"
+                ></i>
+              </div>
+            </a>
+            <a
+              href="LINK_DRIVE_MEDIA"
+              target="_blank"
+              class="group block bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition"
+            >
+              <div
+                class="bg-red-50 h-40 flex items-center justify-center border-b border-gray-100"
+              >
+                <i
+                  data-lucide="presentation"
+                  class="w-16 h-16 text-red-500 group-hover:scale-110 transition"
+                ></i>
+              </div>
+              <div class="p-4 flex justify-between items-center">
+                <div>
+                  <p class="font-bold text-gray-800">
+                    Media Pembelajaran (PPT)
+                  </p>
+                  <p class="text-xs text-gray-500">PDF / PPT (Google Drive)</p>
+                </div>
+                <i
+                  data-lucide="external-link"
+                  class="w-5 h-5 text-gray-400"
+                ></i>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- TAB 3: VIDEO PRAKTIK -->
+        <div id="tab-video" class="tab-content reveal">
+          <div
+            class="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm mb-6"
+          >
+            <h2 class="text-2xl font-heading font-bold text-uim mb-4">
+              Analisis Video Pelaksanaan Praktik Mengajar
+            </h2>
+            <div class="prose max-w-none text-gray-600 space-y-4">
+              <p>
+                <strong>Konteks & Tujuan:</strong> Video ini mendokumentasikan
+                pelaksanaan praktik mengajar mandiri materi Elif (Siklus 2-4).
+                Tujuannya untuk merefleksikan penguasaan kelas, penyampaian
+                materi, dan interaksi dengan murid.
+              </p>
+              <p>
+                <strong>Kelebihan:</strong> Berdasarkan rekaman, saya berhasil
+                membangun komunikasi dua arah yang baik. Saya mampu membimbing
+                siswa langkah demi langkah saat <i>live coding</i> dan sigap
+                membantu murid yang mengalami kesulitan indentasi. Penggunaan
+                proyektor dan komputer lab berjalan sesuai rencana.
+              </p>
+              <p>
+                <strong>Kekurangan:</strong> Masih terdapat momen di mana
+                beberapa murid di barisan belakang kurang fokus saat sesi
+                penjelasan teori. Manajemen waktu pada sesi presentasi hasil
+                kerja juga sedikit melebihi alokasi yang direncanakan.
+              </p>
+              <p>
+                <strong>Kajian Teori:</strong> Praktik ini mencerminkan
+                penerapan Teori Belajar Sosial (Bandura) dan
+                <i>Scaffolding</i> (Vygotsky), di mana guru memberikan bimbingan
+                bertahap yang kemudian dilepas saat siswa mampu menulis kode
+                secara mandiri. Refleksi video ini mengadopsi kerangka 5R (<i
+                  >Reporting, Responding, Relating, Reasoning, Reconstructing</i
+                >).
+              </p>
+            </div>
+          </div>
+          <div class="grid md:grid-cols-2 gap-4">
+            <a
+              href="LINK_DRIVE_VIDEO"
+              target="_blank"
+              class="group block bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition"
+            >
+              <div
+                class="bg-blue-50 h-40 flex items-center justify-center border-b border-gray-100 relative"
+              >
+                <i
+                  data-lucide="video"
+                  class="w-16 h-16 text-blue-500 group-hover:scale-110 transition"
+                ></i>
+                <div
+                  class="absolute bottom-2 right-2 bg-black/70 text-white text-xs px-2 py-1 rounded"
+                >
+                  MP4
+                </div>
+              </div>
+              <div class="p-4 flex justify-between items-center">
+                <div>
+                  <p class="font-bold text-gray-800">Video Praktik Mengajar</p>
+                  <p class="text-xs text-gray-500">Video File (Google Drive)</p>
+                </div>
+                <i data-lucide="play-circle" class="w-5 h-5 text-gray-400"></i>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- TAB 4: REFLEKSI AKHIR -->
+        <div id="tab-refleksi" class="tab-content reveal">
+          <div class="bg-uimlight border border-uim rounded-2xl p-8 shadow-sm">
+            <h2 class="text-2xl font-heading font-bold text-uim mb-6">
+              Refleksi Akhir Praktik Mengajar Mandiri
+            </h2>
+
+            <div class="space-y-6 text-gray-800">
+              <div>
+                <h3 class="font-heading font-bold text-lg text-uim mb-2">
+                  1. Model Guru yang Dituju & Filosofi Mengajar
+                </h3>
+                <p class="text-sm leading-relaxed">
+                  Saya bercita-cita menjadi guru yang reflektif, adaptif, dan
+                  mampu merancang pembelajaran berdiferensiasi. Saya
+                  menginternalisasi filosofi Ki Hadjar Dewantara bahwa guru
+                  adalah "pamong" yang menuntun kodrat murid. Dalam Informatika,
+                  saya tidak ingin murid hanya menghafal sintaks, melainkan
+                  menuntun logika berpikir mereka agar mampu memecahkan masalah
+                  secara mandiri.
+                </p>
+              </div>
+
+              <div>
+                <h3 class="font-heading font-bold text-lg text-uim mb-2">
+                  2. Kekuatan (Strength)
+                </h3>
+                <p class="text-sm leading-relaxed">
+                  Kemampuan saya dalam merancang media pembelajaran yang
+                  inovatif (seperti pendekatan analogi lampu lalu lintas pada
+                  PPT) dan menciptakan suasana kelas yang aman untuk mencoba
+                  (tidak takut error). Saya juga berhasil membangun kedekatan
+                  personal dengan murid sehingga mereka tidak segan bertanya
+                  saat praktik.
+                </p>
+              </div>
+
+              <div>
+                <h3 class="font-heading font-bold text-lg text-uim mb-2">
+                  3. Kelemahan (Weakness)
+                </h3>
+                <p class="text-sm leading-relaxed">
+                  Manajemen waktu saya masih perlu diperbaiki, terutama saat
+                  sesi praktik dan presentasi. Pengawasan (proximity control)
+                  terhadap murid di barisan belakang juga belum optimal,
+                  sehingga masih ada murid yang kurang fokus saat sesi
+                  penjelasan.
+                </p>
+              </div>
+
+              <!-- RTL Box -->
+              <div
+                class="bg-white p-5 rounded-xl border-l-4 border-uim shadow-sm mt-6"
+              >
+                <h3 class="font-heading font-bold text-lg text-uim mb-3">
+                  4. Rencana Tindak Lanjut (RTL)
+                </h3>
+                <ul
+                  class="list-decimal list-inside text-sm space-y-2 text-gray-700"
+                >
+                  <li>
+                    <strong>Manajemen Waktu:</strong> Menggunakan
+                    <i>timer</i> visual di layar proyektor untuk membatasi
+                    durasi setiap fase pembelajaran.
+                  </li>
+                  <li>
+                    <strong>Penguasaan Kelas:</strong> Menerapkan strategi
+                    <i>proximity control</i> (berjalan mendekati barisan
+                    belakang) saat menjelaskan teori.
+                  </li>
+                  <li>
+                    <strong>Diferensiasi:</strong> Menyiapkan tantangan tambahan
+                    (modifikasi program) bagi murid yang selesai lebih cepat,
+                    agar tidak mengganggu teman lain.
+                  </li>
+                  <li>
+                    <strong>Evaluasi Diri:</strong> Membiasakan diri menonton
+                    rekaman mengajar dan meminta umpan balik dari Guru Pamong
+                    setiap selesai siklus.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-50 border-t border-gray-200 py-8 mt-12">
+      <div class="max-w-6xl mx-auto px-4 text-center text-sm text-gray-500">
+        <p>
+          &copy; 2026 Arudji Hermatyar, S.Kom — PPG Prajabatan Informatika,
+          Universitas Islam Makassar.
+        </p>
+      </div>
+    </footer>
+
+    <!-- SCRIPT -->
+    <script>
+      // Inisialisasi Ikon
+      lucide.createIcons();
+
+      // Logika Tab
+      const tabBtns = document.querySelectorAll(".tab-btn");
+      const tabContents = document.querySelectorAll(".tab-content");
+
+      tabBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          // Hapus kelas aktif
+          tabBtns.forEach((b) => b.classList.remove("active"));
+          tabContents.forEach((c) => c.classList.remove("active"));
+
+          // Tambah kelas aktif
+          btn.classList.add("active");
+          const targetId = btn.getAttribute("data-target");
+          document.getElementById(targetId).classList.add("active");
+
+          // Trigger ulang animasi
+          setTimeout(() => {
+            document.getElementById(targetId).classList.add("active");
+          }, 10);
+        });
+      });
+
+      // Animasi Scroll
+      const revealElements = document.querySelectorAll(".reveal");
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("active");
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: "0px 0px -50px 0px" },
+      );
+
+      revealElements.forEach((el) => revealObserver.observe(el));
+    </script>
+  </body>
+</html>
