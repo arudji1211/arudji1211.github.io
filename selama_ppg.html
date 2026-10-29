@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portofolio PPG | Arudji Hermatyar, S.Kom</title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Work+Sans:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              uim: "#006d45",
+              uimlight: "#e6f4ef",
+              uimhover: "#005234",
+            },
+            fontFamily: {
+              sans: ["DM Sans", "sans-serif"],
+              heading: ["Work Sans", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background-color: #ffffff;
+        color: #333333;
+      }
+      /* Animasi Scroll */
+      .reveal {
+        opacity: 0;
+        transform: translateY(20px);
+        transition:
+          opacity 0.6s ease-out,
+          transform 0.6s ease-out;
+      }
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      /* Custom Timeline */
+      .timeline-item {
+        position: relative;
+        padding-left: 2rem;
+        padding-bottom: 2rem;
+        border-left: 2px solid #e5e7eb;
+      }
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: -9px;
+        top: 0;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background-color: #006d45;
+        border: 4px solid #ffffff;
+        box-shadow: 0 0 0 2px #e6f4ef;
+      }
+      .timeline-item:last-child {
+        border-left-color: transparent;
+      }
+      /* Accordion Styling */
+      .accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+      }
+      .accordion-content.open {
+        max-height: 1000px; /* Estimasi tinggi maksimal konten */
+        transition: max-height 0.5s ease-in;
+      }
+    </style>
+  </head>
+  <body class="font-sans antialiased">
+    <!-- HEADER -->
+    <header
+      class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-200 shadow-sm"
+    >
+      <div
+        class="max-w-6xl mx-auto px-4 h-20 flex items-center justify-between"
+      >
+        <div class="flex items-center gap-3">
+          <div
+            class="w-10 h-10 bg-uimlight border-2 border-uim rounded-xl flex items-center justify-center text-uim font-heading font-bold text-sm"
+          >
+            <img src="LOGO_UIM.png" style="padding: 3px" alt="Logo UIM" />
+          </div>
+          <div>
+            <h1 class="font-heading font-bold text-uim text-lg leading-tight">
+              ARUDJI HERMATYAR, S.Kom
+            </h1>
+            <p class="text-sm text-gray-500">
+              PPG Informatika | NIM: 25086085007
+            </p>
+          </div>
+        </div>
+        <div class="hidden md:block">
+          <a href="#lk3" class="text-sm font-medium text-gray-500 hover:text-uim transition">LK 3 Refleksi PPG</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-8 md:py-12">
+      
+      <!-- SECTION PROFIL (HERO) -->
+      <section class="mb-16 reveal">
+        <div class="bg-gray-50 border border-gray-200 rounded-2xl p-8 md:p-12 shadow-sm flex flex-col md:flex-row items-center md:items-start gap-8">
+          <div class="flex-shrink-0">
+            <img src="profile.jpeg" alt="Foto Profil Arudji Hermatyar" class="w-40 h-40 md:w-48 md:h-48 object-cover rounded-full border-4 border-white shadow-lg" />
+          </div>
+          <div class="text-center md:text-left flex-grow">
+            <span class="inline-block bg-uimlight text-uim text-xs font-bold px-3 py-1 rounded-full mb-3 uppercase tracking-wider">Calon Guru Profesional</span>
+            <h2 class="text-3xl font-heading font-bold text-gray-900 mb-2">Arudji Hermatyar, S.Kom</h2>
+            <p class="text-gray-600 mb-6 font-medium">Mahasiswa PPG Prajabatan Informatika | Universitas Islam Makassar</p>
+            <div class="grid md:grid-cols-2 gap-6 text-left">
+              <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm">
+                <h3 class="flex items-center gap-2 font-bold text-uim mb-2">
+                  <i data-lucide="target" class="w-5 h-5"></i> Visi
+                </h3>
+                <p class="text-sm text-gray-600 leading-relaxed">Menjadi pendidik yang mampu menuntun kodrat murid, menghidupi nilai-nilai Pancasila, serta menciptakan pembelajaran Informatika yang mendalam, inklusif, dan menyenangkan di era digital.</p>
+              </div>
+              <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm">
+                <h3 class="flex items-center gap-2 font-bold text-uim mb-2">
+                  <i data-lucide="rocket" class="w-5 h-5"></i> Misi
+                </h3>
+                <ul class="text-sm text-gray-600 list-disc list-inside space-y-1">
+                  <li>Menerapkan pembelajaran berdiferensiasi.</li>
+                  <li>Mengintegrasikan teknologi dalam kelas.</li>
+                  <li>Menjadi teladan karakter yang baik.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION INFO PROGRAM -->
+      <section class="mb-12 reveal bg-uim rounded-xl p-6 text-white flex flex-wrap justify-between items-center gap-6">
+        <div>
+          <p class="text-uimlight text-sm mb-1 uppercase tracking-wider font-semibold">Portofolio Digital Terpadu</p>
+          <h3 class="font-heading font-bold text-2xl">Refleksi Pengalaman Belajar PPG</h3>
+        </div>
+        <div class="flex flex-wrap gap-8 text-sm">
+          <div>
+            <p class="text-uimlight">Program</p>
+            <p class="font-bold">PPG Prajabatan</p>
+          </div>
+          <div>
+            <p class="text-uimlight">Total Mata Kuliah</p>
+            <p class="font-bold">11 Mata Kuliah</p>
+          </div>
+          <div>
+            <p class="text-uimlight">Tahun</p>
+            <p class="font-bold">2025/2026</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION LK 3: REFLEKSI AKHIR PPG -->
+      <div id="lk3" class="mb-20 scroll-mt-24">
+        <div class="text-center mb-10 reveal">
+          <span class="inline-block bg-uimlight text-uim text-xs font-bold px-4 py-1.5 rounded-full mb-4 uppercase tracking-widest">Lembar Kerja 3 (LK 3)</span>
+          <h2 class="text-3xl md:text-4xl font-heading font-bold text-gray-900 mb-4">Refleksi Pengalaman Belajar Selama PPG</h2>
+          <p class="text-gray-600 text-lg max-w-2xl mx-auto">Sintesis perjalanan transformatif selama menempuh Program Pendidikan Profesi Guru.</p>
+        </div>
+
+        <!-- 1. Paradigma Pendidikan -->
+        <div class="bg-white border border-gray-200 rounded-2xl p-8 md:p-10 shadow-sm relative overflow-hidden mb-8 reveal">
+          <div class="absolute top-0 right-0 -mr-8 -mt-8 w-32 h-32 bg-uimlight rounded-full opacity-50"></div>
+          <div class="relative z-10">
+            <div class="flex items-center gap-3 mb-6">
+              <div class="p-3 bg-uimlight text-uim rounded-xl"><i data-lucide="compass" class="w-6 h-6"></i></div>
+              <h3 class="text-2xl font-heading font-bold text-gray-900">Paradigma Baru Pendidikan di Indonesia</h3>
+            </div>
+            <div class="prose max-w-none text-gray-700 leading-relaxed space-y-4">
+              <p class="text-lg font-medium text-uim italic">"Setelah mengikuti rangkaian refleksi pengalaman belajar, saya menyadari bahwa Pendidikan di Indonesia seharusnya..."</p>
+              <p>...tidak lagi berhenti pada sekadar proses transfer ilmu (<em>transfer of knowledge</em>) atau pencapaian nilai akademik semata. Pendidikan harus kembali pada hakikatnya sebagai upaya <strong>"menuntun" kodrat alam dan kodrat zaman murid</strong>, sesuai dengan pemikiran Ki Hadjar Dewantara.</p>
+              <p>Pendidikan seharusnya menjadi ruang yang <strong>memanusiakan manusia secara utuh</strong>. Artinya, pendidikan tidak hanya mencerdaskan intelektual (olah pikir), tetapi juga membentuk karakter yang berakhlak mulia (olah hati), peka terhadap lingkungan sosial (olah rasa), serta sehat secara fisik dan emosional (olah raga).</p>
+              <p>Saya menyadari bahwa pendidikan di Indonesia harus berbasis pada <strong>keberpihakan kepada murid (<em>student-centered</em>)</strong>. Lingkungan belajar harus bebas dari rasa takut, aman untuk bereksperimen dan gagal (<em>productive failure</em>), serta menjunjung tinggi nilai-nilai moderasi, toleransi, dan kearifan lokal (seperti nilai <em>Lempu</em>, <em>Sombere</em>, dan <em>Sipakatau</em>).</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Menjadi Guru Profesional -->
+        <div class="bg-white border border-gray-200 rounded-2xl p-8 md:p-10 shadow-sm mb-8 reveal">
+          <div class="flex items-center gap-3 mb-6">
+            <div class="p-3 bg-uimlight text-uim rounded-xl"><i data-lucide="award" class="w-6 h-6"></i></div>
+            <h3 class="text-2xl font-heading font-bold text-gray-900">Menjadi Guru Profesional</h3>
+          </div>
+          <div class="prose max-w-none text-gray-700 leading-relaxed space-y-6">
+            <p class="text-lg font-medium text-uim italic">"Saya menyadari bahwa untuk menjadi guru profesional, saya harus..."</p>
+            <div class="grid md:grid-cols-2 gap-6">
+              <div class="bg-gray-50 p-5 rounded-xl border border-gray-100">
+                <div class="flex items-start gap-3">
+                  <i data-lucide="heart-handshake" class="w-5 h-5 text-uim mt-1 flex-shrink-0"></i>
+                  <div>
+                    <h4 class="font-bold text-gray-900 mb-1">Internalisasi Etika & Keteladanan</h4>
+                    <p class="text-sm text-gray-600">Guru profesional bukan hanya pintar menyampaikan materi, tetapi yang menghidupi kode etik profesinya. Saya harus menjadi teladan dalam kejujuran (<em>Lempu</em>), kasih sayang (<em>Sombere</em>), dan kerendahan hati (<em>Tawadhu</em>).</p>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-gray-50 p-5 rounded-xl border border-gray-100">
+                <div class="flex items-start gap-3">
+                  <i data-lucide="cpu" class="w-5 h-5 text-uim mt-1 flex-shrink-0"></i>
+                  <div>
+                    <h4 class="font-bold text-gray-900 mb-1">Adaptif & Menguasai Pedagogik Digital</h4>
+                    <p class="text-sm text-gray-600">Saya harus mampu merancang pembelajaran mendalam (<em>Deep Learning</em>) dengan <em>Backward Design</em>, menerapkan diferensiasi, serta menguasai media digital dan TIK untuk mendukung kesiapan kerja murid SMK.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-gray-50 p-5 rounded-xl border border-gray-100">
+                <div class="flex items-start gap-3">
+                  <i data-lucide="users" class="w-5 h-5 text-uim mt-1 flex-shrink-0"></i>
+                  <div>
+                    <h4 class="font-bold text-gray-900 mb-1">Kolaborasi & Paham Regulasi</h4>
+                    <p class="text-sm text-gray-600">Memahami landasan yuridis (UU, KEGI) untuk melindungi diri dan murid, serta mampu bekerja sama dengan orang tua, rekan sejawat, dan komunitas (Tri Pusat Pendidikan).</p>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-gray-50 p-5 rounded-xl border border-gray-100">
+                <div class="flex items-start gap-3">
+                  <i data-lucide="refresh-cw" class="w-5 h-5 text-uim mt-1 flex-shrink-0"></i>
+                  <div>
+                    <h4 class="font-bold text-gray-900 mb-1">Menjadi Guru yang Reflektif</h4>
+                    <p class="text-sm text-gray-600">Senantiasa melakukan <em>Muhasabah</em> Profesional dan refleksi 5R (Reporting, Responding, Relating, Reasoning, Reconstructing) setelah mengajar untuk terus memperbaiki kualitas praktik.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Rencana Tindak Lanjut -->
+        <div class="text-center mb-8 reveal mt-12">
+          <h3 class="text-2xl font-heading font-bold text-gray-900">Rencana Tindak Lanjut (Action Plan)</h3>
+          <p class="text-gray-500 mt-2">Langkah nyata yang akan diambil pasca-kelulusan PPG.</p>
+        </div>
+        <div class="grid md:grid-cols-2 gap-8 mb-8">
+          <div class="bg-uim rounded-2xl p-8 text-white shadow-lg relative overflow-hidden reveal">
+            <div class="absolute top-0 right-0 -mr-4 -mt-4 w-24 h-24 bg-white/10 rounded-full"></div>
+            <h4 class="font-heading font-bold text-xl mb-4 relative z-10">3 Hal Penting Saat Memulai Karir</h4>
+            <p class="text-uimlight text-sm mb-6 italic relative z-10">"Tiga hal penting yang akan saya lakukan ketika memulai karir saya sebagai guru adalah..."</p>
+            <div class="space-y-4 relative z-10">
+              <div class="flex items-start gap-3">
+                <div class="w-6 h-6 rounded-full bg-white text-uim flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">1</div>
+                <p class="text-sm leading-relaxed"><strong>Asesmen Diagnostik & Kontrak Belajar:</strong> Memetakan profil, kesiapan kognitif, dan emosional murid di awal pertemuan untuk merancang pembelajaran berdiferensiasi dan menyepakati kelas yang aman.</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="w-6 h-6 rounded-full bg-white text-uim flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">2</div>
+                <p class="text-sm leading-relaxed"><strong>Menciptakan Lingkungan Ramah (Well-Being):</strong> Berkomitmen menggunakan pendekatan restoratif (bukan punitif), menerapkan <em>mindful pause</em>, dan menggunakan bahasa yang memberdayakan.</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="w-6 h-6 rounded-full bg-white text-uim flex items-center justify-center font-bold text-xs flex-shrink-0 mt-0.5">3</div>
+                <p class="text-sm leading-relaxed"><strong>Pembelajaran Kontekstual Berbasis Proyek:</strong> Merancang pembelajaran yang dimulai dari "koneksi, bukan konten" melalui studi kasus nyata atau proyek (PjBL) yang relevan dengan dunia industri.</p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-gray-50 border border-gray-200 rounded-2xl p-8 shadow-sm reveal">
+            <h4 class="font-heading font-bold text-xl text-gray-900 mb-4">Sebagai Guru Profesional</h4>
+            <p class="text-gray-500 text-sm mb-6 italic">"Sebagai guru profesional, saya akan melakukan..."</p>
+            <div class="space-y-4">
+              <div class="flex items-start gap-3">
+                <div class="p-2 bg-white rounded-lg shadow-sm flex-shrink-0 text-uim"><i data-lucide="clipboard-check" class="w-4 h-4"></i></div>
+                <div>
+                  <h5 class="font-bold text-gray-800 text-sm">Menjaga Integritas & Dokumentasi</h5>
+                  <p class="text-xs text-gray-600 mt-1">Memastikan asesmen transparan, adil, dan holistik. Mendokumentasikan setiap tindakan pembinaan sebagai bentuk pertanggungjawaban profesional dan perlindungan hukum.</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="p-2 bg-white rounded-lg shadow-sm flex-shrink-0 text-uim"><i data-lucide="share-2" class="w-4 h-4"></i></div>
+                <div>
+                  <h5 class="font-bold text-gray-800 text-sm">Menjadi Agen Perubahan & Berbagi</h5>
+                  <p class="text-xs text-gray-600 mt-1">Aktif dalam komunitas belajar (MGMP), membagikan praktik inovatif, serta menjadi teladan dalam mengelola emosi (CASEL & EMC²) di lingkungan sekolah.</p>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <div class="p-2 bg-white rounded-lg shadow-sm flex-shrink-0 text-uim"><i data-lucide="book-open-check" class="w-4 h-4"></i></div>
+                <div>
+                  <h5 class="font-bold text-gray-800 text-sm">Pembelajar Sepanjang Hayat</h5>
+                  <p class="text-xs text-gray-600 mt-1">Terus mengasah diri melalui pelatihan, membaca literatur terbaru, dan membiasakan VTR (<em>What Makes You Say That?</em>) agar tidak kehilangan relevansi sebagai pendidik.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="border-gray-200 my-16" />
+
+      <!-- SECTION REKAP SEMESTER 1 -->
+      <div class="mb-16">
+        <div class="text-center mb-10 reveal">
+          <h2 class="text-3xl font-heading font-bold text-gray-900 mb-2">Jejak Pembelajaran: Semester I</h2>
+          <p class="text-gray-600">Fondasi Filosofis & Teoretis (6 Mata Kuliah)</p>
+        </div>
+        
+        <div class="space-y-4 reveal">
+          <!-- Accordion Item 1 -->
+          <div class="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm">
+            <button class="w-full px-6 py-4 text-left flex justify-between items-center bg-gray-50 hover:bg-gray-100 transition accordion-btn">
+              <div class="flex items-center gap-3">
+                <span class="bg-uimlight text-uim text-xs font-bold px-2 py-1 rounded">1</span>
+                <span class="font-bold text-gray-800">Filosofi Pendidikan</span>
+              </div>
+              <i data-lucide="chevron-down" class="w-5 h-5 text-gray-500 transition-transform transform"></i>
+            </button>
+            <div class="accordion-content">
+              <div class="px-6 py-4 text-sm text-gray-600 leading-relaxed">
+                <p class="mb-2"><strong>Konsep Kunci:</strong> Hakikat pendidikan sebagai "tuntunan" (Ki Hadjar Dewantara), Kodrat Alam & Zaman, Pancasila sebagai landasan filosofi, Pendidikan Nilai, dan Kode Etik Guru.</p>
+                <p><strong>Perubahan:</strong> Berubah dari "penyampai materi" menjadi "pamong dan teladan nilai". Mengintegrasikan pendidikan nilai di setiap mata pelajaran dan membangun budaya refleksi.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Accordion Item 2 -->
+          <div class="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm">
+            <button class="w-full px-6 py-4 text-left flex justify-between items-center bg-gray-50 hover:bg-gray-100 transition accordion-btn">
+              <div class="flex items-center gap-3">
+                <span class="bg-uimlight text-uim text-xs font-bold px-2 py-1 rounded">2</span>
+                <span class="font-bold text-gray-800">Growth Mindset</span>
+              </div>
+              <i data-lucide="chevron-down" class="w-5 h-5 text-gray-500 transition-transform transform"></i>
+            </button>
+            <div class="accordion-content">
+              <div class="px-6 py-4 text-sm text-gray-600 leading-relaxed">
+                <p class="mb-2"><strong>Konsep Kunci:</strong> Neuroplastisitas, The Power of Yet, Productive Failure, 4 strategi intervensi kelas (Cognitive Framing, Scaffolding, OBT, Formative Assessment).</p>
+                <p><strong>Perubahan:</strong> Menerapkan pujian proses (bukan bakat), merancang tantangan ter-scaffold, dan menciptakan lingkungan aman untuk gagal (kesalahan jadi bahan diskusi).</p>
+              </div>
+            </div>
+          </div>
+          <!-- Accordion Item 3 -->
+          <div class="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm">
+            <button class="w-full px-6 py-4 text-left flex justify-between items-center bg-gray-50 hover:bg-gray-100 transition accordion-btn">
+              <div class="flex items-center gap-3">
+                <span class="bg-uimlight text-uim text-xs font-bold px-2 py-1 rounded">3</span>
+                <span class="font-bold text-gray-800">Peserta Didik dan Pemahamannya</span>
+              </div>
+              <i data-lucide="chevron-down" class="w-5 h-5 text-gray-500 transition-transform transform"></i>
+            </button>
+            <div class="accordion-content">
+              <div class="px-6 py-4 text-sm text-gray-600 leading-relaxed">
+                <p class="mb-2"><strong>Konsep Kunci:</strong> Keberagaman karakteristik, Pembelajaran Berdiferensiasi, ZPD & Scaffolding (Vygotsky), Maslow, Asesmen Diagnostik, Lingkungan belajar aman.</p>
+                <p><strong>Perubahan:</strong> Berhenti menjadi "guru serba tahu" dan mulai menjadi fasilitator. Membiasakan asesmen diagnostik dan merancang jalur aktivitas diferensiasi.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Accordion Item 4 -->
+          <div class="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm">
+            <button class="w-full px-6 py-4 text-left flex justify-between items-center bg-gray-50 hover:bg-gray-100 transition accordion-btn">
+              <div class="flex items-center gap-3">
+                <span class="bg-uimlight text-uim text-xs font-bold px-2 py-1 rounded">4</span>
+                <span class="font-bold text-gray-800">Pembelajaran Mendalam (PMA)</span>
+              </div>
+              <i data-lucide="chevron-down" class="w-5 h-5 text-gray-500 transition-transform transform"></i>
+            </button>
+            <div class="accordion-content">
+              <div class="px-6 py-4 text-sm text-gray-600 leading-relaxed">
+                <p class="mb-2"><strong>Konsep Kunci:</strong> Kerangka Pembelajaran Mendalam, Taksonomi SOLO, Backward Design (UbD), Desain Universal untuk Pembelajaran (DUP), Asesmen Autentik.</p>
+                <p><strong>Perubahan:</strong> Memulai perencanaan dari tujuan (ABCD) lalu asesmen, baru aktivitas. Menerapkan prinsip DUP dan asesmen yang variatif (proyek, portofolio).</p>
+              </div>
+            </div>
+          </div>
+          <!-- Accordion Item 5 -->
+          <div class="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm">
+            <button class="w-full px-6 py-4 text-left flex justify-between items-center bg-gray-50 hover:bg-gray-100 transition accordion-btn">
+              <div class="flex items-center gap-3">
+                <span class="bg-uimlight text-uim text-xs font-bold px-2 py-1 rounded">5</span>
+                <span class="font-bold text-gray-800">PPL Terbimbing</span>
+              </div>
+              <i data-lucide="chevron-down" class="w-5 h-5 text-gray-500 transition-transform transform"></i>
+            </button>
+            <div class="accordion-content">
+              <div class="px-6 py-4 text-sm text-gray-600 leading-relaxed">
+                <p class="mb-2"><strong>Konsep Kunci:</strong> Pembelajaran bermakna dimulai dari koneksi, Asesmen diagnostik, Diferensiasi, Multi-level learning (tutor sebaya), Refleksi 5R, Kearifan lokal (Sipakatau).</p>
+                <p><strong>Perubahan:</strong> Merancang modul ajar antisipatif, menerapkan diferensiasi sadar (termasuk alternatif tanpa perangkat), dan mendokumentasikan setiap modifikasi.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Accordion Item 6 -->
+          <div class="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm">
+            <button class="w-full px-6 py-4 text-left flex justify-between items-center bg-gray-50 hover:bg-gray-100 transition accordion-btn">
+              <div class="flex items-center gap-3">
+                <span class="bg-uimlight text-uim text-xs font-bold px-2 py-1 rounded">6</span>
+                <span class="font-bold text-gray-800">Kewirausahaan (Selektif)</span>
+              </div>
+              <i data-lucide="chevron-down" class="w-5 h-5 text-gray-500 transition-transform transform"></i>
+            </button>
+            <div class="accordion-content">
+              <div class="px-6 py-4 text-sm text-gray-600 leading-relaxed">
+                <p class="mb-2"><strong>Konsep Kunci:</strong> Technopreneurship, Project Based Learning (PjBL), Digital Marketing, Asset-Based Thinking, Cognitive Framing.</p>
+                <p><strong>Perubahan:</strong> Menggeser pembelajaran ke student-centered dengan "Proyek Mini-Bisnis". Membingkai kegagalan sebagai data berharga dan menciptakan lingkungan aman untuk gagal.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION REKAP SEMESTER 2 -->
+      <div class="mb-16">
+        <div class="text-center mb-10 reveal">
+          <h2 class="text-3xl font-heading font-bold text-gray-900 mb-2">Jejak Pembelajaran: Semester II</h2>
+          <p class="text-gray-600">Implementasi & Pendalaman (5 Mata Kuliah)</p>
+        </div>
+        
+        <div class="space-y-4 reveal">
+          <!-- Accordion Item 1 -->
+          <div class="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm">
+            <button class="w-full px-6 py-4 text-left flex justify-between items-center bg-gray-50 hover:bg-gray-100 transition accordion-btn">
+              <div class="flex items-center gap-3">
+                <span class="bg-uimlight text-uim text-xs font-bold px-2 py-1 rounded">1</span>
+                <span class="font-bold text-gray-800">Pembelajaran Sosial Emosional (PSE)</span>
+              </div>
+              <i data-lucide="chevron-down" class="w-5 h-5 text-gray-500 transition-transform transform"></i>
+            </button>
+            <div class="accordion-content">
+              <div class="px-6 py-4 text-sm text-gray-600 leading-relaxed">
+                <p class="mb-2"><strong>Konsep Kunci:</strong> 5 Kompetensi CASEL, EMC² (Empati, Mindfulness, Compassion, Critical Inquiry), Experiential Learning Kolb, School Well-Being.</p>
+                <p><strong>Perubahan:</strong> Regulasi emosi dengan mindfulness, menerapkan experiential learning, membangun school well-being, dan pendekatan EMC² pada murid yang pasif.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Accordion Item 2 -->
+          <div class="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm">
+            <button class="w-full px-6 py-4 text-left flex justify-between items-center bg-gray-50 hover:bg-gray-100 transition accordion-btn">
+              <div class="flex items-center gap-3">
+                <span class="bg-uimlight text-uim text-xs font-bold px-2 py-1 rounded">2</span>
+                <span class="font-bold text-gray-800">Pembelajaran Mendalam & Asesmen (PMA)</span>
+              </div>
+              <i data-lucide="chevron-down" class="w-5 h-5 text-gray-500 transition-transform transform"></i>
+            </button>
+            <div class="accordion-content">
+              <div class="px-6 py-4 text-sm text-gray-600 leading-relaxed">
+                <p class="mb-2"><strong>Konsep Kunci:</strong> Prinsip Pembelajaran Mendalam, DUP, TaRL, CRT, Asesmen Autentik (AaL, AfL, AoL), Rubrik, Taksonomi SOLO.</p>
+                <p><strong>Perubahan:</strong> Merancang pembelajaran kontekstual, membiasakan asesmen awal, membuat rubrik transparan, dan menggunakan portofolio serta jurnal refleksi.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Accordion Item 3 -->
+          <div class="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm">
+            <button class="w-full px-6 py-4 text-left flex justify-between items-center bg-gray-50 hover:bg-gray-100 transition accordion-btn">
+              <div class="flex items-center gap-3">
+                <span class="bg-uimlight text-uim text-xs font-bold px-2 py-1 rounded">3</span>
+                <span class="font-bold text-gray-800">PPL Mandiri</span>
+              </div>
+              <i data-lucide="chevron-down" class="w-5 h-5 text-gray-500 transition-transform transform"></i>
+            </button>
+            <div class="accordion-content">
+              <div class="px-6 py-4 text-sm text-gray-600 leading-relaxed">
+                <p class="mb-2"><strong>Konsep Kunci:</strong> Asesmen Diagnostik & Diferensiasi, Scaffolding (Vygotsky), PBL, Manajemen Kelas.</p>
+                <p><strong>Perubahan:</strong> Beralih ke student-centered, memberikan lebih banyak waktu eksperimen (live coding), merancang asesmen formatif komprehensif, dan lebih peka terhadap emosi murid.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Accordion Item 4 -->
+          <div class="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm">
+            <button class="w-full px-6 py-4 text-left flex justify-between items-center bg-gray-50 hover:bg-gray-100 transition accordion-btn">
+              <div class="flex items-center gap-3">
+                <span class="bg-uimlight text-uim text-xs font-bold px-2 py-1 rounded">4</span>
+                <span class="font-bold text-gray-800">Projek Kepemimpinan</span>
+              </div>
+              <i data-lucide="chevron-down" class="w-5 h-5 text-gray-500 transition-transform transform"></i>
+            </button>
+            <div class="accordion-content">
+              <div class="px-6 py-4 text-sm text-gray-600 leading-relaxed">
+                <p class="mb-2"><strong>Konsep Kunci:</strong> 7 Habits of Highly Effective People (Stephen Covey), Visible Thinking Routine (VTR).</p>
+                <p><strong>Perubahan:</strong> Lebih proaktif (Be Proactive), menghargai sinergi tim, peduli proses & keseimbangan diri (Sharpen the Saw), serta membiasakan VTR sebagai contoh berpikir kritis.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Accordion Item 5 -->
+          <div class="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm">
+            <button class="w-full px-6 py-4 text-left flex justify-between items-center bg-gray-50 hover:bg-gray-100 transition accordion-btn">
+              <div class="flex items-center gap-3">
+                <span class="bg-uimlight text-uim text-xs font-bold px-2 py-1 rounded">5</span>
+                <span class="font-bold text-gray-800">Aswaja & Etika Profesi Guru</span>
+              </div>
+              <i data-lucide="chevron-down" class="w-5 h-5 text-gray-500 transition-transform transform"></i>
+            </button>
+            <div class="accordion-content">
+              <div class="px-6 py-4 text-sm text-gray-600 leading-relaxed">
+                <p class="mb-2"><strong>Konsep Kunci:</strong> Empat Pilar Aswaja (Tawassuth, Tawazun, I'tidal, Tasamuh), Karakter Guru Bintang 9 (Lempu, Sombere), Landasan Yuridis (UU, KEGI), Muhasabah.</p>
+                <p><strong>Perubahan:</strong> Internalisasi Tawadhu dan Sombere, menerapkan mindful pause sebelum merespons, mengganti bahasa kaku dengan yang memberdayakan, dan rutin dokumentasi.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION TIMELINE KESIMPULAN -->
+      <section class="mb-16 reveal">
+        <div class="bg-gray-50 border border-gray-200 rounded-2xl p-8 md:p-10 shadow-sm">
+          <h3 class="text-2xl font-heading font-bold text-gray-900 mb-6 text-center">Sintesis Perjalanan Belajar</h3>
+          <div class="max-w-2xl mx-auto mt-8">
+            <div class="timeline-item">
+              <h4 class="font-bold text-uim text-sm mb-1">Semester I — Fondasi Filosofis & Teoretis</h4>
+              <p class="text-sm text-gray-600">Memahami hakikat pendidikan (Ki Hadjar Dewantara), Growth Mindset, karakteristik peserta didik, teori belajar, hingga konsep dasar kewirausahaan. Membangun kesadaran sebagai calon guru.</p>
+            </div>
+            <div class="timeline-item">
+              <h4 class="font-bold text-uim text-sm mb-1">Semester II — Implementasi & Pendalaman</h4>
+              <p class="text-sm text-gray-600">Menerapkan teori ke lapangan (PPL Mandiri), mendalami Pembelajaran Mendalam, mengelola emosi (PSE), mempraktikkan kepemimpinan, serta memantapkan etika profesi (Aswaja).</p>
+            </div>
+            <div class="timeline-item">
+              <h4 class="font-bold text-uim text-sm mb-1">Refleksi Akhir — Transformasi Paradigma</h4>
+              <p class="text-sm text-gray-600">Menyadari bahwa menjadi guru adalah proses belajar sepanjang hayat. Guru bukanlah "orang yang paling tahu", melainkan "pamong" yang menuntun, teladan yang menghidupi nilai, serta fasilitator yang menciptakan ruang aman bagi murid untuk bertumbuh.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-50 border-t border-gray-200 py-8 mt-12">
+      <div class="max-w-6xl mx-auto px-4 text-center text-sm text-gray-500">
+        <p>&copy; 2026 Arudji Hermatyar, S.Kom — PPG Prajabatan Informatika, Universitas Islam Makassar.</p>
+        <p class="mt-2 text-xs text-gray-400">Portofolio Digital Terpadu | Lembar Kerja 3 (LK 3).</p>
+      </div>
+    </footer>
+
+    <!-- FLOATING NAVIGATION BUTTONS -->
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col gap-3 group">
+      <div class="hidden group-hover:flex flex-col gap-2 items-end transition-all duration-300">
+        <a href="semester_1.html" class="bg-white text-uim font-bold text-sm px-4 py-2 rounded-lg shadow-lg border border-gray-200 hover:bg-uimlight transition flex items-center gap-2">
+          <i data-lucide="layout" class="w-4 h-4"></i> Buka Semester 1
+        </a>
+        <a href="semester_2.html" class="bg-white text-uim font-bold text-sm px-4 py-2 rounded-lg shadow-lg border border-gray-200 hover:bg-uimlight transition flex items-center gap-2">
+          <i data-lucide="layout" class="w-4 h-4"></i> Buka Semester 2
+        </a>
+      </div>
+      <button class="bg-uim text-white w-14 h-14 rounded-full shadow-xl flex items-center justify-center hover:bg-uimhover transition transform hover:scale-105">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+      </button>
+    </div>
+
+    <!-- SCRIPT -->
+    <script>
+      lucide.createIcons();
+      
+      // Animasi Scroll Reveal
+      const revealElements = document.querySelectorAll(".reveal");
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("active");
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: "0px 0px -50px 0px" },
+      );
+      revealElements.forEach((el) => revealObserver.observe(el));
+
+      // Accordion Logic
+      const accordionBtns = document.querySelectorAll(".accordion-btn");
+      accordionBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const content = btn.nextElementSibling;
+          const icon = btn.querySelector("i");
+          
+          // Toggle class open pada content
+          content.classList.toggle("open");
+          
+          // Rotasi icon chevron
+          if (content.classList.contains("open")) {
+            icon.style.transform = "rotate(180deg)";
+          } else {
+            icon.style.transform = "rotate(0deg)";
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

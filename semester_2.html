@@ -1,0 +1,928 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Refleksi Pengalaman Belajar Setiap Mata Kuliah Semester II | Arudji
+      Hermatyar
+    </title>
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Work+Sans:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              uim: "#006d45",
+              uimlight: "#e6f4ef",
+              uimhover: "#005234",
+            },
+            fontFamily: {
+              sans: ["DM Sans", "sans-serif"],
+              heading: ["Work Sans", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background-color: #ffffff;
+        color: #333333;
+      }
+      /* Animasi Scroll */
+      .reveal {
+        opacity: 0;
+        transform: translateY(20px);
+        transition:
+          opacity 0.6s ease-out,
+          transform 0.6s ease-out;
+      }
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      /* Tab Styling */
+      .tab-btn {
+        border-bottom: 3px solid transparent;
+        transition: all 0.3s ease;
+      }
+      .tab-btn.active {
+        border-bottom-color: #006d45;
+        color: #006d45;
+        font-weight: 700;
+      }
+      .tab-content {
+        display: none;
+      }
+      .tab-content.active {
+        display: block;
+        animation: fadeIn 0.4s ease-out;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body class="font-sans antialiased">
+    <!-- HEADER -->
+    <header
+      class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-200 shadow-sm"
+    >
+      <div
+        class="max-w-6xl mx-auto px-4 h-20 flex items-center justify-between"
+      >
+        <div class="flex items-center gap-3">
+          <div
+            class="w-10 h-10 bg-uimlight border-2 border-uim rounded-xl flex items-center justify-center text-uim font-heading font-bold text-sm"
+          >
+            <img src="LOGO_UIM.png" style="padding: 3px" alt="Logo UIM" />
+          </div>
+          <div>
+            <h1 class="font-heading font-bold text-uim text-lg leading-tight">
+              ARUDJI HERMATYAR, S.Kom
+            </h1>
+            <p class="text-sm text-gray-500">
+              PPG Informatika | NIM: 25086085007
+            </p>
+          </div>
+        </div>
+        <div class="hidden md:block text-sm font-medium text-gray-500">
+          Refleksi Pembelajaran Semester II
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-12">
+      <!-- SECTION PROFIL (HERO) -->
+      <section class="mb-16 reveal">
+        <div
+          class="bg-gray-50 border border-gray-200 rounded-2xl p-8 md:p-12 shadow-sm flex flex-col md:flex-row items-center md:items-start gap-8"
+        >
+          <div class="flex-shrink-0">
+            <img
+              src="profile.jpeg"
+              alt="Foto Profil Arudji Hermatyar"
+              class="w-40 h-40 md:w-48 md:h-48 object-cover rounded-full border-4 border-white shadow-lg"
+            />
+          </div>
+          <div class="text-center md:text-left flex-grow">
+            <span
+              class="inline-block bg-uimlight text-uim text-xs font-bold px-3 py-1 rounded-full mb-3 uppercase tracking-wider"
+              >Calon Guru Profesional</span
+            >
+            <h2 class="text-3xl font-heading font-bold text-gray-900 mb-2">
+              Arudji Hermatyar, S.Kom
+            </h2>
+            <p class="text-gray-600 mb-6 font-medium">
+              Mahasiswa PPG Prajabatan Informatika | Universitas Islam Makassar
+            </p>
+            <div class="grid md:grid-cols-2 gap-6 text-left">
+              <div
+                class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm"
+              >
+                <h3 class="flex items-center gap-2 font-bold text-uim mb-2">
+                  <i data-lucide="target" class="w-5 h-5"></i> Visi
+                </h3>
+                <p class="text-sm text-gray-600 leading-relaxed">
+                  Menjadi pendidik yang mampu menuntun kodrat murid, menghidupi
+                  nilai-nilai Pancasila, serta menciptakan pembelajaran
+                  Informatika yang mendalam, inklusif, dan menyenangkan di era
+                  digital.
+                </p>
+              </div>
+              <div
+                class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm"
+              >
+                <h3 class="flex items-center gap-2 font-bold text-uim mb-2">
+                  <i data-lucide="rocket" class="w-5 h-5"></i> Misi
+                </h3>
+                <ul
+                  class="text-sm text-gray-600 list-disc list-inside space-y-1"
+                >
+                  <li>Menerapkan pembelajaran berdiferensiasi.</li>
+                  <li>Mengintegrasikan teknologi dalam kelas.</li>
+                  <li>Menjadi teladan karakter yang baik.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- INFO PRAKTIK -->
+      <section
+        class="mb-10 reveal bg-uim rounded-xl p-6 text-white flex flex-wrap justify-between items-center gap-4"
+      >
+        <div>
+          <p
+            class="text-uimlight text-sm mb-1 uppercase tracking-wider font-semibold"
+          >
+            Portofolio Digital
+          </p>
+          <h3 class="font-heading font-bold text-xl">
+            Refleksi Pengalaman Belajar Semester II
+          </h3>
+        </div>
+        <div class="flex flex-wrap gap-6 text-sm">
+          <div>
+            <p class="text-uimlight">Program</p>
+            <p class="font-bold">PPG Prajabatan</p>
+          </div>
+          <div>
+            <p class="text-uimlight">Mata Kuliah</p>
+            <p class="font-bold">5 Mata Kuliah</p>
+          </div>
+          <div>
+            <p class="text-uimlight">Tahun</p>
+            <p class="font-bold">2026</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- NAVIGASI TAB -->
+      <div class="border-b border-gray-200 mb-8 overflow-x-auto">
+        <div class="flex min-w-max gap-2" role="tablist">
+          <button
+            class="tab-btn active px-5 py-4 text-gray-600 font-medium text-sm"
+            data-target="tab1"
+          >
+            1. Pembelajaran Sosial Emosional
+          </button>
+          <button
+            class="tab-btn px-5 py-4 text-gray-600 font-medium text-sm"
+            data-target="tab2"
+          >
+            2. Pembelajaran Mendalam
+          </button>
+          <button
+            class="tab-btn px-5 py-4 text-gray-600 font-medium text-sm"
+            data-target="tab3"
+          >
+            3. PPL Mandiri
+          </button>
+          <button
+            class="tab-btn px-5 py-4 text-gray-600 font-medium text-sm"
+            data-target="tab4"
+          >
+            4. Projek Kepemimpinan
+          </button>
+          <button
+            class="tab-btn px-5 py-4 text-gray-600 font-medium text-sm"
+            data-target="tab5"
+          >
+            5. Aswaja & Etika Profesi
+          </button>
+        </div>
+      </div>
+
+      <!-- KONTEN TAB -->
+      <div>
+        <!-- TAB 1: PSE -->
+        <div id="tab1" class="tab-content active reveal">
+          <div
+            class="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm mb-6"
+          >
+            <h2 class="text-2xl font-heading font-bold text-uim mb-4">
+              Refleksi 4C: Pembelajaran Sosial Emosional
+            </h2>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div class="p-4 bg-gray-50 rounded-lg border border-gray-100">
+                <h3 class="font-bold text-uim mb-2 flex items-center gap-2">
+                  <i data-lucide="link" class="w-4 h-4"></i> Connection
+                </h3>
+                <p class="text-sm text-gray-600">
+                  Materi PSE, EMC², dan School Well-Being membuka pemahaman saya
+                  bahwa guru harus mampu mengelola emosi diri sendiri dan
+                  memahami kondisi emosional murid, bukan sekadar transfer ilmu.
+                </p>
+              </div>
+              <div class="p-4 bg-gray-50 rounded-lg border border-gray-100">
+                <h3 class="font-bold text-uim mb-2 flex items-center gap-2">
+                  <i data-lucide="alert-circle" class="w-4 h-4"></i> Challenge
+                </h3>
+                <p class="text-sm text-gray-600">
+                  Menghadapi kelas XII yang pasif dan murid mengantuk setelah
+                  dzuhur. Dulu saya cenderung menyalahkan diri sendiri, kini
+                  saya belajar merefleksikan akar masalahnya.
+                </p>
+              </div>
+              <div class="p-4 bg-gray-50 rounded-lg border border-gray-100">
+                <h3 class="font-bold text-uim mb-2 flex items-center gap-2">
+                  <i data-lucide="book-open" class="w-4 h-4"></i> Concept
+                </h3>
+                <ul class="text-sm text-gray-600 list-disc list-inside">
+                  <li>5 Kompetensi CASEL</li>
+                  <li>
+                    EMC² (Empati, Mindfulness, Compassion, Critical Inquiry)
+                  </li>
+                  <li>Siklus Experiential Learning Kolb</li>
+                  <li>School Well-Being</li>
+                  <li>Integritas Akademik</li>
+                </ul>
+              </div>
+              <div class="p-4 bg-gray-50 rounded-lg border border-gray-100">
+                <h3 class="font-bold text-uim mb-2 flex items-center gap-2">
+                  <i data-lucide="trending-up" class="w-4 h-4"></i> Change
+                </h3>
+                <ul class="text-sm text-gray-600 list-disc list-inside">
+                  <li>Regulasi emosi dengan mindfulness.</li>
+                  <li>Menerapkan Experiential Learning.</li>
+                  <li>Membangun School Well-Being.</li>
+                  <li>Pendekatan EMC² pada murid.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div
+            class="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm mb-6"
+          >
+            <h2 class="text-2xl font-heading font-bold text-uim mb-4">
+              Analisis Artefak
+            </h2>
+            <div class="prose max-w-none text-gray-600">
+              <p class="mb-2">
+                <strong>Artefak yang dipilih:</strong> RPP Informatika Kelas XII
+                (Pertemuan 5), LK 2.2 (Analisis Kasus Pencurian Uang SPP), LK
+                4.1 & 4.2 (Refleksi Diri dan Studi Kasus School Well-Being), dan
+                Jurnal Refleksi Harian.
+              </p>
+              <p class="mb-2">
+                <strong>Alasan:</strong> Mencerminkan perencanaan pembelajaran
+                nyata, latihan empati dalam konflik, refleksi mendalam tentang
+                well-being, dan perjalanan emosi autentik sebagai calon guru.
+              </p>
+              <p>
+                <strong>Bagian Pendukung:</strong> Langkah pembelajaran dan
+                asesmen pada RPP; analisis keteladanan guru pada LK 2.2; bagian
+                cara menghadapi tantangan pada LK 4.1; analisis kebutuhan murid
+                pada LK 4.2; serta catatan perasaan kecewa dan cara bangkit pada
+                jurnal.
+              </p>
+            </div>
+          </div>
+          <div
+            class="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm mb-6"
+          >
+            <h2 class="text-2xl font-heading font-bold text-uim mb-4">
+              Kaitan Praktis
+            </h2>
+            <div class="prose max-w-none text-gray-600">
+              <p class="mb-2">
+                <strong>Konsep Utama:</strong> CASEL, EMC², Experiential
+                Learning Kolb, School Well-Being, Integritas Akademik.
+              </p>
+              <p>
+                <strong>Perubahan ke Depan:</strong> Lebih sadar diri, lebih
+                sabar, dan lebih kreatif dalam merancang pembelajaran yang
+                bermakna bagi murid, serta melibatkan orang tua dan komunitas.
+              </p>
+            </div>
+          </div>
+          <!-- Card Lampiran -->
+          <div class="grid md:grid-cols-2 gap-4">
+            <a
+              href="https://drive.google.com/drive/folders/1RmLNvO6xCji-0B9PIMnRucbtZcBL_8Un?usp=sharing"
+              target="_blank"
+              class="group block bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition"
+            >
+              <div
+                class="bg-red-50 h-40 flex items-center justify-center border-b border-gray-100"
+              >
+                <i
+                  data-lucide="file-text"
+                  class="w-16 h-16 text-red-500 group-hover:scale-110 transition"
+                ></i>
+              </div>
+              <div class="p-4 flex justify-between items-center">
+                <div>
+                  <p class="font-bold text-gray-800">Dokumen LK 2 PSE</p>
+                  <p class="text-xs text-gray-500">PDF Document (Drive)</p>
+                </div>
+                <i
+                  data-lucide="external-link"
+                  class="w-5 h-5 text-gray-400"
+                ></i>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- TAB 2: PMA -->
+        <div id="tab2" class="tab-content reveal">
+          <div
+            class="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm mb-6"
+          >
+            <h2 class="text-2xl font-heading font-bold text-uim mb-4">
+              Refleksi 4C: Pembelajaran Mendalam dan Asesmen Lanjut
+            </h2>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div class="p-4 bg-gray-50 rounded-lg border border-gray-100">
+                <h3 class="font-bold text-uim mb-2 flex items-center gap-2">
+                  <i data-lucide="link" class="w-4 h-4"></i> Connection
+                </h3>
+                <p class="text-sm text-gray-600">
+                  Materi ini mengajarkan saya merancang pengalaman belajar yang
+                  membuat murid memahami, mengaplikasikan, dan merefleksikan
+                  pengetahuan, bukan sekadar penyampaian materi.
+                </p>
+              </div>
+              <div class="p-4 bg-gray-50 rounded-lg border border-gray-100">
+                <h3 class="font-bold text-uim mb-2 flex items-center gap-2">
+                  <i data-lucide="alert-circle" class="w-4 h-4"></i> Challenge
+                </h3>
+                <p class="text-sm text-gray-600">
+                  Mengubah cara pandang asesmen dari sekadar nilai akhir menjadi
+                  bagian integral proses pembelajaran (awal, formatif, sumatif).
+                </p>
+              </div>
+              <div class="p-4 bg-gray-50 rounded-lg border border-gray-100">
+                <h3 class="font-bold text-uim mb-2 flex items-center gap-2">
+                  <i data-lucide="book-open" class="w-4 h-4"></i> Concept
+                </h3>
+                <ul class="text-sm text-gray-600 list-disc list-inside">
+                  <li>Prinsip Pembelajaran Mendalam</li>
+                  <li>DUP, TaRL, CRT</li>
+                  <li>Asesmen Autentik (AaL, AfL, AoL)</li>
+                  <li>Rubrik, Portofolio, Umpan Balik Deskriptif</li>
+                  <li>Taksonomi SOLO</li>
+                </ul>
+              </div>
+              <div class="p-4 bg-gray-50 rounded-lg border border-gray-100">
+                <h3 class="font-bold text-uim mb-2 flex items-center gap-2">
+                  <i data-lucide="trending-up" class="w-4 h-4"></i> Change
+                </h3>
+                <ul class="text-sm text-gray-600 list-disc list-inside">
+                  <li>
+                    Merancang pembelajaran kontekstual dan berpusat pada murid.
+                  </li>
+                  <li>Membiasakan asesmen awal dan diferensiasi.</li>
+                  <li>Membuat rubrik transparan.</li>
+                  <li>Menggunakan portofolio dan jurnal refleksi.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div
+            class="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm mb-6"
+          >
+            <h2 class="text-2xl font-heading font-bold text-uim mb-4">
+              Analisis Artefak
+            </h2>
+            <div class="prose max-w-none text-gray-600">
+              <p class="mb-2">
+                <strong>Artefak yang dipilih:</strong> Dokumen analisis kasus
+                pembelajaran berbasis proyek di kelas animasi SMK, laporan
+                diskusi TaRL dan CRT, lembar kerja sintesis integrasi
+                pembelajaran mendalam, serta refleksi dan rencana tindak lanjut
+                kasus.
+              </p>
+              <p class="mb-2">
+                <strong>Alasan:</strong> Menggambarkan proses belajar secara
+                utuh dari memahami konsep, menganalisis kasus nyata, merumuskan
+                solusi, hingga merencanakan tindak lanjut.
+              </p>
+              <p>
+                <strong>Bagian Pendukung:</strong> Analisis masalah pada aspek
+                perencanaan, pelaksanaan, dan asesmen; rumusan alternatif solusi
+                (transparansi rubrik, portofolio, dll); serta uraian penerapan
+                TaRL dan CRT.
+              </p>
+            </div>
+          </div>
+          <div
+            class="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm mb-6"
+          >
+            <h2 class="text-2xl font-heading font-bold text-uim mb-4">
+              Kaitan Praktis
+            </h2>
+            <div class="prose max-w-none text-gray-600">
+              <p class="mb-2">
+                <strong>Konsep Utama:</strong> Pembelajaran mendalam, DUP, TaRL,
+                CRT, asesmen autentik, rubrik, portofolio, Taksonomi SOLO.
+              </p>
+              <p>
+                <strong>Perubahan ke Depan:</strong> Merancang pembelajaran
+                kontekstual, melakukan asesmen awal, membuat rubrik transparan,
+                menggunakan portofolio, dan melibatkan murid dalam self/peer
+                assessment.
+              </p>
+            </div>
+          </div>
+          <div class="grid md:grid-cols-2 gap-4">
+            <a
+              href="https://drive.google.com/drive/folders/1X94nHyFhvhYMAo8V3pw3_L-EmbW4d637?usp=sharing"
+              target="_blank"
+              class="group block bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition"
+            >
+              <div
+                class="bg-red-50 h-40 flex items-center justify-center border-b border-gray-100"
+              >
+                <i
+                  data-lucide="file-text"
+                  class="w-16 h-16 text-red-500 group-hover:scale-110 transition"
+                ></i>
+              </div>
+              <div class="p-4 flex justify-between items-center">
+                <div>
+                  <p class="font-bold text-gray-800">Dokumen LK 2 PMA</p>
+                  <p class="text-xs text-gray-500">PDF Document (Drive)</p>
+                </div>
+                <i
+                  data-lucide="external-link"
+                  class="w-5 h-5 text-gray-400"
+                ></i>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- TAB 3: PPL -->
+        <div id="tab3" class="tab-content reveal">
+          <div
+            class="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm mb-6"
+          >
+            <h2 class="text-2xl font-heading font-bold text-uim mb-4">
+              Refleksi 4C: PPL Mandiri
+            </h2>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div class="p-4 bg-gray-50 rounded-lg border border-gray-100">
+                <h3 class="font-bold text-uim mb-2 flex items-center gap-2">
+                  <i data-lucide="link" class="w-4 h-4"></i> Connection
+                </h3>
+                <p class="text-sm text-gray-600">
+                  Praktik di SMAN 22 Makassar (Percabangan Elif) menyadarkan
+                  saya bahwa guru adalah pamong yang menuntun logika berpikir
+                  murid, bukan sekadar pentransfer materi.
+                </p>
+              </div>
+              <div class="p-4 bg-gray-50 rounded-lg border border-gray-100">
+                <h3 class="font-bold text-uim mb-2 flex items-center gap-2">
+                  <i data-lucide="alert-circle" class="w-4 h-4"></i> Challenge
+                </h3>
+                <p class="text-sm text-gray-600">
+                  Kenyataan lapangan tidak sesuai teori. Banyak murid error
+                  karena salah indentasi atau keliru membedakan = dan ==. Saya
+                  harus turun personal mendampingi debugging.
+                </p>
+              </div>
+              <div class="p-4 bg-gray-50 rounded-lg border border-gray-100">
+                <h3 class="font-bold text-uim mb-2 flex items-center gap-2">
+                  <i data-lucide="book-open" class="w-4 h-4"></i> Concept
+                </h3>
+                <ul class="text-sm text-gray-600 list-disc list-inside">
+                  <li>Asesmen Diagnostik & Diferensiasi</li>
+                  <li>Scaffolding (Vygotsky)</li>
+                  <li>Pembelajaran Berbasis Masalah (PBL)</li>
+                  <li>Manajemen Kelas</li>
+                </ul>
+              </div>
+              <div class="p-4 bg-gray-50 rounded-lg border border-gray-100">
+                <h3 class="font-bold text-uim mb-2 flex items-center gap-2">
+                  <i data-lucide="trending-up" class="w-4 h-4"></i> Change
+                </h3>
+                <ul class="text-sm text-gray-600 list-disc list-inside">
+                  <li>Beralih dari teacher-centered ke student-centered.</li>
+                  <li>Lebih banyak waktu eksperimen di komputer.</li>
+                  <li>Merancang asesmen formatif komprehensif.</li>
+                  <li>Lebih peka terhadap kondisi emosional murid.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div
+            class="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm mb-6"
+          >
+            <h2 class="text-2xl font-heading font-bold text-uim mb-4">
+              Analisis Artefak
+            </h2>
+            <div class="prose max-w-none text-gray-600">
+              <p class="mb-2">
+                <strong>Artefak yang dipilih:</strong> Modul Ajar Praktik Python
+                (Percabangan Elif), Media Pembelajaran (PPT Traffic Light/Elif),
+                dan Dokumentasi Hasil Kerja Siswa (LKPD).
+              </p>
+              <p class="mb-2">
+                <strong>Alasan:</strong> Merepresentasikan siklus perencanaan,
+                pelaksanaan, dan evaluasi secara utuh. Modul dan PPT bukti
+                perencanaan inovatif, LKPD bukti hasil belajar autentik.
+              </p>
+              <p>
+                <strong>Bagian Pendukung:</strong> Langkah pembelajaran (Fase 3
+                & 4) dan asesmen formatif pada Modul; aturan emas pada PPT;
+                serta kode hasil modifikasi siswa pada LKPD.
+              </p>
+            </div>
+          </div>
+          <div
+            class="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm mb-6"
+          >
+            <h2 class="text-2xl font-heading font-bold text-uim mb-4">
+              Kaitan Praktis
+            </h2>
+            <div class="prose max-w-none text-gray-600">
+              <p class="mb-2">
+                <strong>Konsep Utama:</strong> Asesmen Diagnostik, Diferensiasi,
+                Scaffolding, PBL, Manajemen Kelas.
+              </p>
+              <p>
+                <strong>Perubahan ke Depan:</strong> Selalu merancang asesmen
+                formatif komprehensif, menyiapkan strategi debugging
+                terstruktur, dan menciptakan lingkungan kelas aman untuk
+                bereksperimen dan gagal.
+              </p>
+            </div>
+          </div>
+          <div class="grid md:grid-cols-2 gap-4">
+            <a
+              href="https://drive.google.com/drive/folders/14XFmtsPEaG6pgl7Q4yQe0wVVVZRuz6ax?usp=sharing"
+              target="_blank"
+              class="group block bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition"
+            >
+              <div
+                class="bg-red-50 h-40 flex items-center justify-center border-b border-gray-100"
+              >
+                <i
+                  data-lucide="file-text"
+                  class="w-16 h-16 text-red-500 group-hover:scale-110 transition"
+                ></i>
+              </div>
+              <div class="p-4 flex justify-between items-center">
+                <div>
+                  <p class="font-bold text-gray-800">Dokumen LK 2 PPL</p>
+                  <p class="text-xs text-gray-500">PDF Document (Drive)</p>
+                </div>
+                <i
+                  data-lucide="external-link"
+                  class="w-5 h-5 text-gray-400"
+                ></i>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- TAB 4: Projek Kepemimpinan -->
+        <div id="tab4" class="tab-content reveal">
+          <div
+            class="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm mb-6"
+          >
+            <h2 class="text-2xl font-heading font-bold text-uim mb-4">
+              Refleksi 4C: Projek Kepemimpinan
+            </h2>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div class="p-4 bg-gray-50 rounded-lg border border-gray-100">
+                <h3 class="font-bold text-uim mb-2 flex items-center gap-2">
+                  <i data-lucide="link" class="w-4 h-4"></i> Connection
+                </h3>
+                <p class="text-sm text-gray-600">
+                  7 Habits of Highly Effective People sangat berkaitan dengan
+                  peran saya. Sebagai Divisi Logistik, memimpin berarti
+                  mengelola diri, waktu, dan kerja sama.
+                </p>
+              </div>
+              <div class="p-4 bg-gray-50 rounded-lg border border-gray-100">
+                <h3 class="font-bold text-uim mb-2 flex items-center gap-2">
+                  <i data-lucide="alert-circle" class="w-4 h-4"></i> Challenge
+                </h3>
+                <p class="text-sm text-gray-600">
+                  Mengubah cara pandang dari "sekadar bantu-bantu" menjadi
+                  "bagian dari sistem projek yang berdampak".
+                </p>
+              </div>
+              <div class="p-4 bg-gray-50 rounded-lg border border-gray-100">
+                <h3 class="font-bold text-uim mb-2 flex items-center gap-2">
+                  <i data-lucide="book-open" class="w-4 h-4"></i> Concept
+                </h3>
+                <ul class="text-sm text-gray-600 list-disc list-inside">
+                  <li>
+                    7 Habits (Proactive, Begin with End in Mind, Put First
+                    Things First, Think Win-Win, Seek First to Understand,
+                    Synergize, Sharpen the Saw)
+                  </li>
+                  <li>Visible Thinking Routine (VTR)</li>
+                </ul>
+              </div>
+              <div class="p-4 bg-gray-50 rounded-lg border border-gray-100">
+                <h3 class="font-bold text-uim mb-2 flex items-center gap-2">
+                  <i data-lucide="trending-up" class="w-4 h-4"></i> Change
+                </h3>
+                <ul class="text-sm text-gray-600 list-disc list-inside">
+                  <li>Lebih proaktif, tidak menunggu arahan.</li>
+                  <li>Lebih menghargai sinergi tim.</li>
+                  <li>Lebih peduli proses dan keseimbangan diri.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div
+            class="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm mb-6"
+          >
+            <h2 class="text-2xl font-heading font-bold text-uim mb-4">
+              Analisis Artefak
+            </h2>
+            <div class="prose max-w-none text-gray-600">
+              <p class="mb-2">
+                <strong>Artefak yang dipilih:</strong> Proposal Projek
+                Kepemimpinan Kelompok 1 "Digital Skill for Gen Z" (bagian
+                struktur tim dan Logistik), dokumentasi kegiatan (pemasangan
+                terminal, poster, konsumsi), dan catatan pengeluaran logistik.
+              </p>
+              <p class="mb-2">
+                <strong>Alasan:</strong> Proposal menunjukkan peran resmi,
+                dokumentasi menunjukkan tindakan nyata, catatan pengeluaran
+                menunjukkan tanggung jawab pengelolaan kebutuhan.
+              </p>
+              <p>
+                <strong>Bagian Pendukung:</strong> Halaman 9 Proposal (Logistik)
+                mendukung Connection dan Concept; dokumentasi pemasangan
+                mendukung Be Proactive dan Put First Things First; catatan
+                pembelian mendukung Synergize dan Sharpen the Saw.
+              </p>
+            </div>
+          </div>
+          <div
+            class="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm mb-6"
+          >
+            <h2 class="text-2xl font-heading font-bold text-uim mb-4">
+              Kaitan Praktis
+            </h2>
+            <div class="prose max-w-none text-gray-600">
+              <p class="mb-2">
+                <strong>Konsep Utama:</strong> 7 Habits of Highly Effective
+                People, VTR.
+              </p>
+              <p>
+                <strong>Perubahan ke Depan:</strong> Lebih proaktif, menghargai
+                kerja tim, menjaga keseimbangan diri (Sharpen the Saw), dan
+                membiasakan menuliskan alasan di balik keputusan (VTR) sebagai
+                contoh berpikir kritis.
+              </p>
+            </div>
+          </div>
+          <div class="grid md:grid-cols-2 gap-4">
+            <a
+              href="https://drive.google.com/drive/folders/1kxdyPc2Run5lBJ8Ddm0ZKecJWTKamdSL?usp=sharing"
+              target="_blank"
+              class="group block bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition"
+            >
+              <div
+                class="bg-red-50 h-40 flex items-center justify-center border-b border-gray-100"
+              >
+                <i
+                  data-lucide="file-text"
+                  class="w-16 h-16 text-red-500 group-hover:scale-110 transition"
+                ></i>
+              </div>
+              <div class="p-4 flex justify-between items-center">
+                <div>
+                  <p class="font-bold text-gray-800">
+                    Dokumen LK 2 Projek Kepemimpinan
+                  </p>
+                  <p class="text-xs text-gray-500">PDF Document (Drive)</p>
+                </div>
+                <i
+                  data-lucide="external-link"
+                  class="w-5 h-5 text-gray-400"
+                ></i>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- TAB 5: Aswaja -->
+        <div id="tab5" class="tab-content reveal">
+          <div
+            class="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm mb-6"
+          >
+            <h2 class="text-2xl font-heading font-bold text-uim mb-4">
+              Refleksi 4C: Aswaja dan Etika Profesi Guru
+            </h2>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div class="p-4 bg-gray-50 rounded-lg border border-gray-100">
+                <h3 class="font-bold text-uim mb-2 flex items-center gap-2">
+                  <i data-lucide="link" class="w-4 h-4"></i> Connection
+                </h3>
+                <p class="text-sm text-gray-600">
+                  Guru adalah tugas profetik (kenabian) yang menuntut
+                  keseimbangan akademik dan kesalehan spiritual. Nilai Aswaja
+                  menjadi kompas moral dalam menghadapi dinamika kelas.
+                </p>
+              </div>
+              <div class="p-4 bg-gray-50 rounded-lg border border-gray-100">
+                <h3 class="font-bold text-uim mb-2 flex items-center gap-2">
+                  <i data-lucide="alert-circle" class="w-4 h-4"></i> Challenge
+                </h3>
+                <p class="text-sm text-gray-600">
+                  Mengubah paradigma dari teacher-centered punitif menuju
+                  pendekatan restoratif dan humanis. Melatih kesabaran saat
+                  otoritas ditantang.
+                </p>
+              </div>
+              <div class="p-4 bg-gray-50 rounded-lg border border-gray-100">
+                <h3 class="font-bold text-uim mb-2 flex items-center gap-2">
+                  <i data-lucide="book-open" class="w-4 h-4"></i> Concept
+                </h3>
+                <ul class="text-sm text-gray-600 list-disc list-inside">
+                  <li>
+                    Empat Pilar Aswaja (Tawassuth, Tawazun, I'tidal, Tasamuh)
+                  </li>
+                  <li>Karakter Guru Bintang 9 (Lempu, Sombere)</li>
+                  <li>Landasan Yuridis (UU, PP, KEGI)</li>
+                  <li>Muhasabah dan Penanganan Tiga Dosa Besar Pendidikan</li>
+                </ul>
+              </div>
+              <div class="p-4 bg-gray-50 rounded-lg border border-gray-100">
+                <h3 class="font-bold text-uim mb-2 flex items-center gap-2">
+                  <i data-lucide="trending-up" class="w-4 h-4"></i> Change
+                </h3>
+                <ul class="text-sm text-gray-600 list-disc list-inside">
+                  <li>Internalisasi Tawadhu dan Sombere.</li>
+                  <li>Menerapkan mindful pause sebelum merespons.</li>
+                  <li>
+                    Mengganti bahasa instruksional kaku dengan yang
+                    memberdayakan.
+                  </li>
+                  <li>Dokumentasi tindakan pembinaan.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div
+            class="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm mb-6"
+          >
+            <h2 class="text-2xl font-heading font-bold text-uim mb-4">
+              Analisis Artefak
+            </h2>
+            <div class="prose max-w-none text-gray-600">
+              <p class="mb-2">
+                <strong>Artefak yang dipilih:</strong> Lampiran 1 (Lembar
+                Refleksi Diri Mahasiswa PPG: Menjadi Guru yang Moderat, Adil,
+                dan Ramah), Lampiran 2 (Analisis Kasus Tindakan Edukatif Guru:
+                Studi Kasus Bu Aisyah).
+              </p>
+              <p class="mb-2">
+                <strong>Alasan:</strong> Lampiran 1 bukti autentik komitmen
+                pribadi menampilkan wajah Islam ramah. Lampiran 2 menganalisis
+                penerapan teori dalam konflik nyata dengan orang tua.
+              </p>
+              <p>
+                <strong>Bagian Pendukung:</strong> Bagian "Komitmen Pribadi:
+                Guru Ramah" pada Lampiran 1 mendukung tahap Change; bagian
+                "Analisis Kompetensi Guru" dan "Integrasi Nilai Aswaja" pada
+                Lampiran 2 mendukung tahap Concept.
+              </p>
+            </div>
+          </div>
+          <div
+            class="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm mb-6"
+          >
+            <h2 class="text-2xl font-heading font-bold text-uim mb-4">
+              Kaitan Praktis
+            </h2>
+            <div class="prose max-w-none text-gray-600">
+              <p class="mb-2">
+                <strong>Konsep Utama:</strong> Pilar Aswaja, Karakter Guru
+                Bintang 9, Landasan Yuridis, Muhasabah.
+              </p>
+              <p>
+                <strong>Perubahan ke Depan:</strong> Mendengarkan murid dengan
+                empati, berani mengakui keterbatasan, mengganti teguran kaku
+                dengan kalimat memberdayakan, dan rutin melakukan refleksi diri
+                (Muhasabah).
+              </p>
+            </div>
+          </div>
+          <div class="grid md:grid-cols-2 gap-4">
+            <a
+              href="https://drive.google.com/drive/folders/1V0WmY_klkIBid-4O1ZJJ0-8Qy5dHg-jv?usp=sharing"
+              target="_blank"
+              class="group block bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition"
+            >
+              <div
+                class="bg-red-50 h-40 flex items-center justify-center border-b border-gray-100"
+              >
+                <i
+                  data-lucide="file-text"
+                  class="w-16 h-16 text-red-500 group-hover:scale-110 transition"
+                ></i>
+              </div>
+              <div class="p-4 flex justify-between items-center">
+                <div>
+                  <p class="font-bold text-gray-800">Dokumen LK 2 Aswaja</p>
+                  <p class="text-xs text-gray-500">PDF Document (Drive)</p>
+                </div>
+                <i
+                  data-lucide="external-link"
+                  class="w-5 h-5 text-gray-400"
+                ></i>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-50 border-t border-gray-200 py-8 mt-12">
+      <div class="max-w-6xl mx-auto px-4 text-center text-sm text-gray-500">
+        <p>
+          &copy; 2026 Arudji Hermatyar, S.Kom — PPG Prajabatan Informatika,
+          Universitas Islam Makassar.
+        </p>
+      </div>
+    </footer>
+
+    <!-- SCRIPT -->
+    <script>
+      lucide.createIcons();
+      const tabBtns = document.querySelectorAll(".tab-btn");
+      const tabContents = document.querySelectorAll(".tab-content");
+
+      tabBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          tabBtns.forEach((b) => b.classList.remove("active"));
+          tabContents.forEach((c) => c.classList.remove("active"));
+          btn.classList.add("active");
+          const targetId = btn.getAttribute("data-target");
+          document.getElementById(targetId).classList.add("active");
+          setTimeout(() => {
+            document.getElementById(targetId).classList.add("active");
+          }, 10);
+        });
+      });
+
+      const revealElements = document.querySelectorAll(".reveal");
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("active");
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: "0px 0px -50px 0px" },
+      );
+      revealElements.forEach((el) => revealObserver.observe(el));
+    </script>
+  </body>
+</html>
+
