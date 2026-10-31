@@ -1,7 +1,7 @@
 window.SITE_DATA = {
   profile: {
-    name: "Arudji Hermatyar, S.Kom",
-    title: "ARUDJI HERMATYAR, S.Kom",
+    name: "Arudji Hermatyar, S.Kom.",
+    title: "ARUDJI HERMATYAR, S.Kom.",
     subtitle: "PPG Informatika | NIM: 25086085007",
     badge: "Calon Guru Profesional",
     role: "Mahasiswa PPG Prajabatan Informatika | Universitas Islam Makassar",
@@ -170,11 +170,11 @@ window.SITE_DATA = {
       "Berikut adalah artefak dan bukti pelaksanaan inovasi Python Puzzle di lapangan.",
     items: [
       {
-        title: "Laporan Karya Inovasi (LK 4)",
+        title: "Python Puzzle",
         subtitle: "PDF Document",
         icon: "file-text",
         color: "red",
-        href: "#",
+        href: "https://drive.google.com/file/d/1pgjKZ5pNIwp1SaRsjrWBvqWT7biNx2-Y/view?usp=drive_link",
       },
       {
         title: "Buku Panduan Penggunaan",
@@ -184,7 +184,7 @@ window.SITE_DATA = {
         href: "#",
       },
       {
-        title: "LKPD Siswa (Terisi)",
+        title: "LKPD Siswa",
         subtitle: "PDF Document",
         icon: "clipboard-list",
         color: "green",
@@ -195,7 +195,7 @@ window.SITE_DATA = {
         subtitle: "Foto & Video (Drive)",
         icon: "camera",
         color: "purple",
-        href: "#",
+        href: "https://drive.google.com/drive/folders/1jpeJH8T9DidTbSxzZx-SqzfkZh_OBDfl?usp=drive_link",
       },
     ],
   },
@@ -205,4 +205,3 @@ window.SITE_DATA = {
     sub: "Portofolio Seminar PPG | Karya Inovasi Python Puzzle.",
   },
 };
-
