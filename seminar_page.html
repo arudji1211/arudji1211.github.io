@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portofolio Seminar PPG: Python Puzzle | Arudji Hermatyar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Work+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              uim: "#006d45",
+              uimlight: "#e6f4ef",
+              uimhover: "#005234",
+              accent: "#f59e0b",
+            },
+            fontFamily: {
+              sans: ["DM Sans", "sans-serif"],
+              heading: ["Work Sans", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      html { scroll-behavior: smooth; }
+      body { background-color: #f8fafc; color: #333333; }
+      .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+      .reveal.active { opacity: 1; transform: translateY(0); }
+      .timeline-item { position: relative; padding-left: 2rem; padding-bottom: 2rem; border-left: 2px solid #e5e7eb; }
+      .timeline-item::before { content: ""; position: absolute; left: -9px; top: 0; width: 16px; height: 16px; border-radius: 50%; background-color: #006d45; border: 4px solid #ffffff; box-shadow: 0 0 0 2px #e6f4ef; }
+      .timeline-item:last-child { border-left-color: transparent; }
+
+      /* Label kecil di atas tombol nav */
+      #section-nav .nav-label {
+        font-size: 9px;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: #6b7280;
+        text-align: center;
+        max-width: 90px;
+        margin: 0 auto 4px auto;
+        line-height: 1.2;
+        background: #ffffff;
+        padding: 4px 6px;
+        border-radius: 6px;
+        border: 1px solid #e5e7eb;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      }
+    </style>
+  </head>
+  <body class="font-sans antialiased">
+    <!-- HEADER -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-200 shadow-sm">
+      <div class="max-w-6xl mx-auto px-4 h-20 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-uimlight border-2 border-uim rounded-xl flex items-center justify-center text-uim font-heading font-bold text-sm">
+            <img id="logo-img" src="" style="padding: 3px" alt="Logo UIM" />
+          </div>
+          <div>
+            <h1 id="brand-name" class="font-heading font-bold text-uim text-lg leading-tight"></h1>
+            <p id="brand-subtitle" class="text-sm text-gray-500"></p>
+          </div>
+        </div>
+        <div class="hidden md:block">
+          <a href="#refleksi" class="text-sm font-medium text-gray-500 hover:text-uim transition">Portofolio Seminar</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-8 md:py-12">
+
+      <!-- SECTION PROFIL (HERO) -->
+      <section class="mb-16 reveal">
+        <div class="bg-gradient-to-r from-white to-uimlight border border-gray-200 rounded-3xl p-8 md:p-12 shadow-lg flex flex-col md:flex-row items-center md:items-start gap-8 relative">
+          <div class="flex-shrink-0 relative">
+            <div class="absolute inset-0 bg-uim rounded-full blur-xl opacity-20"></div>
+            <img id="profile-img" src="" alt="" class="w-40 h-40 md:w-48 md:h-48 object-cover rounded-full border-4 border-white shadow-xl relative z-10" />
+          </div>
+
+          <div class="text-center md:text-left flex-grow">
+            <span id="badge" class="inline-block bg-accent text-white text-xs font-bold px-3 py-1 rounded-full mb-3 uppercase tracking-wider"></span>
+            <h2 id="profile-name" class="text-3xl md:text-4xl font-heading font-bold text-gray-900 mb-2"></h2>
+            <p id="profile-role" class="text-gray-600 mb-6 font-medium"></p>
+
+            <div class="grid md:grid-cols-2 gap-6">
+              <div id="vision-box" class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm">
+                <h3 class="flex items-center gap-2 font-bold text-uim mb-2"></h3>
+                <p class="text-sm text-gray-600 leading-relaxed"></p>
+              </div>
+              <div id="mission-box" class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm">
+                <h3 class="flex items-center gap-2 font-bold text-uim mb-2"></h3>
+                <ul class="text-sm text-gray-600 list-disc list-inside space-y-1"></ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION INFO PROGRAM -->
+      <section id="info-program" class="mb-12 reveal bg-uim rounded-xl p-6 text-white flex flex-wrap justify-between items-center gap-6 shadow-md scroll-mt-24">
+        <div>
+          <p id="program-label" class="text-uimlight text-sm mb-1 uppercase tracking-wider font-semibold"></p>
+          <h3 id="program-title" class="font-heading font-bold text-2xl"></h3>
+        </div>
+        <div id="program-details" class="flex flex-wrap gap-8 text-sm"></div>
+      </section>
+
+      <!-- KARTU INFO CEPAT -->
+      <section id="quick-stats" class="mb-16 reveal grid grid-cols-2 md:grid-cols-4 gap-4 scroll-mt-24"></section>
+
+      <!-- SECTION 1: REFLEKSI -->
+      <section id="refleksi" class="mb-16 reveal scroll-mt-24">
+        <div class="bg-white border border-gray-200 rounded-2xl p-8 md:p-10 shadow-sm">
+          <div class="section-header flex items-center gap-3 mb-6">
+            <div class="p-3 bg-uimlight text-uim rounded-xl">
+              <i data-icon data-lucide="book-open" class="w-6 h-6"></i>
+            </div>
+            <h2 data-title class="text-2xl font-heading font-bold text-gray-900"></h2>
+          </div>
+          <div class="prose max-w-none text-gray-700 leading-relaxed space-y-4"></div>
+        </div>
+      </section>
+
+      <!-- SECTION 2: LATAR BELAKANG -->
+      <section id="latar-belakang" class="mb-16 reveal scroll-mt-24">
+        <div class="bg-white border border-gray-200 rounded-2xl p-8 md:p-10 shadow-sm">
+          <div class="section-header flex items-center gap-3 mb-6">
+            <div class="p-3 bg-uimlight text-uim rounded-xl">
+              <i data-icon data-lucide="alert-circle" class="w-6 h-6"></i>
+            </div>
+            <h2 data-title class="text-2xl font-heading font-bold text-gray-900"></h2>
+          </div>
+          <div class="prose max-w-none text-gray-700 leading-relaxed space-y-4"></div>
+        </div>
+      </section>
+
+      <!-- SECTION 3: GAGASAN -->
+      <section id="gagasan" class="mb-16 reveal scroll-mt-24">
+        <div class="bg-white border border-gray-200 rounded-2xl p-8 md:p-10 shadow-sm">
+          <div class="section-header flex items-center gap-3 mb-6">
+            <div class="p-3 bg-uimlight text-uim rounded-xl">
+              <i data-icon data-lucide="lightbulb" class="w-6 h-6"></i>
+            </div>
+            <h2 data-title class="text-2xl font-heading font-bold text-gray-900"></h2>
+          </div>
+          <div class="prose max-w-none text-gray-700 leading-relaxed space-y-4"></div>
+        </div>
+      </section>
+
+      <!-- SECTION 4: DESAIN & KOMPONEN -->
+      <section id="desain" class="mb-16 reveal scroll-mt-24">
+        <div class="bg-white border border-gray-200 rounded-2xl p-8 md:p-10 shadow-sm">
+          <div class="section-header flex items-center gap-3 mb-6">
+            <div class="p-3 bg-uimlight text-uim rounded-xl">
+              <i data-icon data-lucide="puzzle" class="w-6 h-6"></i>
+            </div>
+            <h2 data-title class="text-2xl font-heading font-bold text-gray-900"></h2>
+          </div>
+          <div class="components-grid grid md:grid-cols-3 gap-4 mb-6"></div>
+          <div class="prose max-w-none text-gray-700 leading-relaxed"></div>
+        </div>
+      </section>
+
+      <!-- SECTION 5: ASESMEN -->
+      <section id="asesmen" class="mb-16 reveal scroll-mt-24">
+        <div class="bg-white border border-gray-200 rounded-2xl p-8 md:p-10 shadow-sm">
+          <div class="section-header flex items-center gap-3 mb-6">
+            <div class="p-3 bg-uimlight text-uim rounded-xl">
+              <i data-icon data-lucide="clipboard-check" class="w-6 h-6"></i>
+            </div>
+            <h2 data-title class="text-2xl font-heading font-bold text-gray-900"></h2>
+          </div>
+          <div class="overflow-x-auto mb-4">
+            <table class="w-full text-sm text-left border-collapse">
+              <thead>
+                <tr class="bg-uimlight text-uim">
+                  <th class="p-3 border">Sumber</th>
+                  <th class="p-3 border">Siapa</th>
+                  <th class="p-3 border">Bobot</th>
+                  <th class="p-3 border">Instrumen</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+          <p class="formula text-sm font-medium text-uim mb-4"></p>
+          <div class="prose max-w-none text-gray-700 leading-relaxed"></div>
+        </div>
+      </section>
+
+      <!-- SECTION 6: HASIL & MANFAAT -->
+      <section id="hasil" class="mb-16 reveal scroll-mt-24">
+        <div class="bg-white border border-gray-200 rounded-2xl p-8 md:p-10 shadow-sm">
+          <div class="section-header flex items-center gap-3 mb-6">
+            <div class="p-3 bg-uimlight text-uim rounded-xl">
+              <i data-icon data-lucide="trending-up" class="w-6 h-6"></i>
+            </div>
+            <h2 data-title class="text-2xl font-heading font-bold text-gray-900"></h2>
+          </div>
+          <div class="prose max-w-none text-gray-700 leading-relaxed space-y-4"></div>
+        </div>
+      </section>
+
+      <!-- SECTION 7: HARAPAN & RTL -->
+      <section id="rtl" class="mb-16 reveal scroll-mt-24">
+        <div class="bg-gray-50 border border-gray-200 rounded-2xl p-8 md:p-10 shadow-sm">
+          <h2 id="rtl-title" class="text-2xl font-heading font-bold text-gray-900 mb-6 text-center"></h2>
+          <div class="timeline max-w-2xl mx-auto mt-8"></div>
+        </div>
+      </section>
+
+      <!-- SECTION 8: DOKUMENTASI -->
+      <section id="dokumentasi" class="mb-16 reveal scroll-mt-24">
+        <div class="bg-white border border-gray-200 rounded-2xl p-8 md:p-10 shadow-sm">
+          <div class="section-header flex items-center gap-3 mb-6">
+            <div class="p-3 bg-uimlight text-uim rounded-xl">
+              <i data-icon data-lucide="folder-open" class="w-6 h-6"></i>
+            </div>
+            <h2 data-title class="text-2xl font-heading font-bold text-gray-900"></h2>
+          </div>
+          <p class="description text-gray-600 mb-6"></p>
+          <div class="docs-grid grid md:grid-cols-2 gap-4"></div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-50 border-t border-gray-200 py-8 mt-12">
+      <div class="max-w-6xl mx-auto px-4 text-center text-sm text-gray-500">
+        <p id="footer-copy"></p>
+        <p id="footer-sub" class="mt-2 text-xs text-gray-400"></p>
+      </div>
+    </footer>
+
+    <!-- FLOATING NAVIGATION ANTAR SECTION -->
+    <nav id="section-nav" class="fixed right-4 bottom-4 md:right-6 md:bottom-6 z-50 flex flex-col items-center gap-2">
+      <div id="nav-label" class="nav-label"></div>
+      <button
+        id="nav-prev"
+        type="button"
+        aria-label="Section sebelumnya"
+        class="w-12 h-12 rounded-full bg-white border border-gray-200 shadow-lg text-uim hover:bg-uimlight disabled:opacity-40 disabled:cursor-not-allowed transition flex items-center justify-center"
+      >
+        <i data-lucide="chevron-up" class="w-6 h-6"></i>
+      </button>
+      <button
+        id="nav-next"
+        type="button"
+        aria-label="Section berikutnya"
+        class="w-12 h-12 rounded-full bg-uim text-white shadow-lg hover:bg-uimhover disabled:opacity-40 disabled:cursor-not-allowed transition flex items-center justify-center"
+      >
+        <i data-lucide="chevron-down" class="w-6 h-6"></i>
+      </button>
+    </nav>
+
+    <!-- SCRIPT -->
+    <script src="data.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
