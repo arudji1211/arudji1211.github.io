@@ -181,14 +181,14 @@ window.SITE_DATA = {
         subtitle: "PDF Document",
         icon: "book-open",
         color: "blue",
-        href: "#",
+        href: "https://drive.google.com/file/d/1hC1C6g5_pbINm22I3p1UhNV8rOtOLTSi/view?usp=sharing",
       },
       {
         title: "LKPD Siswa",
         subtitle: "PDF Document",
         icon: "clipboard-list",
         color: "green",
-        href: "#",
+        href: "https://drive.google.com/file/d/14H5mrnyL0Kap7jiJW3R9IPRGRXBFZIK7/view?usp=sharing",
       },
       {
         title: "Dokumentasi Kegiatan",
