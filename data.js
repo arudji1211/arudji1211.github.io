@@ -1,7 +1,7 @@
 window.SITE_DATA = {
   profile: {
-    name: "Arudji Hermatyar, S.Kom.",
-    title: "ARUDJI HERMATYAR, S.Kom.",
+    name: "Arudji Hermatyar",
+    title: "ARUDJI HERMATYAR",
     subtitle: "PPG Informatika | NIM: 25086085007",
     badge: "Calon Guru Profesional",
     role: "Mahasiswa PPG Prajabatan Informatika | Universitas Islam Makassar",
