@@ -27,7 +27,7 @@ window.SITE_DATA = {
     label: "Portofolio Seminar PPG",
     title: "Karya Inovasi: Python Puzzle",
     details: [
-      { label: "Mata Kuliah", value: "Pembelajaran Mendalam & Asesmen" },
+      { label: "Mata Pelajaran", value: "Informatika" },
       { label: "Sasaran", value: "Kelas XII SMAN 22 Makassar" },
       { label: "Tahun", value: "2026" },
     ],
