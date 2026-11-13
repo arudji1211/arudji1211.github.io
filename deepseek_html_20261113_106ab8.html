@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Timer RPP — Percabangan Python | SMAN 22 Makassar</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: system-ui, -apple-system, sans-serif;
+    margin: 0; padding: 16px;
+    background: #0f172a; color: #e2e8f0;
+    min-height: 100vh;
+  }
+  h1 { font-size: 1.3rem; margin: 0 0 4px; color: #38bdf8; }
+  .sub { font-size: 0.85rem; color: #94a3b8; margin-bottom: 16px; }
+
+  .controls {
+    display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px;
+    align-items: center;
+  }
+  button {
+    font-size: 0.95rem; padding: 10px 14px;
+    border-radius: 8px; border: none; cursor: pointer;
+    font-weight: 600; transition: opacity 0.2s;
+  }
+  button:hover { opacity: 0.85; }
+  button:disabled { opacity: 0.4; cursor: not-allowed; }
+  .btn-primary { background: #0ea5e9; color: white; }
+  .btn-danger  { background: #ef4444; color: white; }
+  .btn-ghost   { background: #1e293b; color: #e2e8f0; border: 1px solid #334155; }
+
+  .global {
+    background: #1e293b; border-radius: 12px; padding: 12px 16px;
+    margin-bottom: 16px; display: flex; align-items: center; gap: 12px;
+    flex-wrap: wrap;
+  }
+  .global .label { font-size: 0.8rem; color: #94a3b8; }
+  .global .value { font-size: 1.4rem; font-weight: 700; color: #fbbf24; font-variant-numeric: tabular-nums; }
+
+  .stage {
+    background: #1e293b; border-radius: 12px; padding: 14px 16px;
+    margin-bottom: 12px; border-left: 4px solid #334155;
+    transition: all 0.3s;
+  }
+  .stage.active {
+    border-left-color: #0ea5e9;
+    background: #1e3a5f;
+    box-shadow: 0 0 0 2px #0ea5e955;
+  }
+  .stage.done { opacity: 0.6; border-left-color: #22c55e; }
+
+  .stage-header {
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 8px; margin-bottom: 8px; flex-wrap: wrap;
+  }
+  .stage-title { font-size: 1rem; font-weight: 700; }
+  .stage-time  { font-size: 1.6rem; font-weight: 800; font-variant-numeric: tabular-nums; color: #fbbf24; }
+  .stage.active .stage-time { color: #38bdf8; animation: pulse 1s infinite; }
+  @keyframes pulse { 50% { opacity: 0.6; } }
+
+  .stage-desc { font-size: 0.85rem; color: #94a3b8; margin-bottom: 10px; line-height: 1.4; }
+  .stage-badge {
+    display: inline-block; font-size: 0.7rem; padding: 2px 8px;
+    border-radius: 999px; background: #334155; color: #cbd5e1;
+    margin-right: 4px; margin-bottom: 4px;
+  }
+  .progress {
+    height: 6px; background: #0f172a; border-radius: 999px; overflow: hidden;
+    margin-top: 8px;
+  }
+  .progress-bar {
+    height: 100%; width: 0%; background: linear-gradient(90deg,#0ea5e9,#38bdf8);
+    transition: width 0.5s linear;
+  }
+  .stage.done .progress-bar { background: #22c55e; width: 100% !important; }
+
+  .notif-status {
+    font-size: 0.8rem; padding: 6px 10px; border-radius: 6px;
+    background: #1e293b; color: #94a3b8;
+  }
+  .notif-status.ok { color: #22c55e; }
+  .notif-status.err { color: #ef4444; }
+</style>
+</head>
+<body>
+
+<h1>⏱️ Timer RPP — Percabangan (if-else & elif) Python</h1>
+<div class="sub">SMAN 22 Makassar · XII/Ganjil · 2 JP (90 menit) · Arudji Hermatyar</div>
+
+<div class="controls">
+  <button class="btn-primary" id="btnAll">▶ Mulai Semua</button>
+  <button class="btn-danger"  id="btnReset">⟲ Reset</button>
+  <button class="btn-ghost"   id="btnNotif">🔔 Aktifkan Notifikasi</button>
+  <span class="notif-status" id="notifStatus">Notif: belum aktif</span>
+</div>
+
+<div class="global">
+  <div>
+    <div class="label">Total tersisa</div>
+    <div class="value" id="globalTime">90:00</div>
+  </div>
+  <div style="flex:1; min-width: 100px;">
+    <div class="progress"><div class="progress-bar" id="globalBar" style="width:100%"></div></div>
+  </div>
+</div>
+
+<div id="stages"></div>
+
+<script>
+/* =======================================================
+   DATA TAHAP SESUAI RPP FIX (total 90 menit)
+   ======================================================= */
+const STAGES = [
+  {
+    title: "Pendahuluan",
+    minutes: 15,
+    desc: "Salam & doa · Indonesia Raya · Cek kehadiran & postur duduk · Apersepsi (CTL) pertanyaan pemantik · Tujuan pembelajaran · Pretest (5 menit).",
+    dims: ["Keimanan","Kewargaan","Kesehatan","Penalaran Kritis","Kemandirian"]
+  },
+  {
+    title: "Inti — Langkah 1 PBL: Orientasi Masalah",
+    minutes: 10,
+    desc: "Bagikan LKPD & Python Puzzle · Bagi kelompok (3–4 orang) · Sajikan masalah: 'menentukan bilangan genap/ganjil'.",
+    dims: ["Penalaran Kritis","Kolaborasi"]
+  },
+  {
+    title: "Inti — Langkah 2 PBL: Mengorganisasi Belajar",
+    minutes: 10,
+    desc: "Susun kartu Python Puzzle (if-else) · Perwakilan kelompok mengetik di Smartboard · Guru kenalkan sintaks elif (A, B, C, D).",
+    dims: ["Kolaborasi","Komunikasi","Penalaran Kritis"]
+  },
+  {
+    title: "Inti — Langkah 3 PBL: Membimbing Penyelidikan",
+    minutes: 25,
+    desc: "Tulis kode elif di LKPD (kasus predikat nilai) · Guru berkeliling & bantu debugging · Asesmen formatif (observasi) · Pengayaan bagi kelompok cepat.",
+    dims: ["Kemandirian","Kolaborasi","Kreativitas"]
+  },
+  {
+    title: "Inti — Langkah 4 PBL: Mengembangkan & Menyajikan",
+    minutes: 15,
+    desc: "Perwakilan kelompok mengetik kode di laptop guru → jalankan di Smartboard · Apresiasi & umpan balik dari guru dan kelompok lain.",
+    dims: ["Komunikasi","Kewargaan","Kreativitas"]
+  },
+  {
+    title: "Penutup",
+    minutes: 15,
+    desc: "Posttest (5 menit) · Simpulkan if-else vs elif · Refleksi siswa · Rencana remedial/pengayaan.",
+    dims: ["Keimanan","Kemandirian","Penalaran Kritis"]
+  }
+];
+
+const TOTAL_SECONDS = STAGES.reduce((s, x) => s + x.minutes * 60, 0);
+
+/* =======================================================
+   STATE
+   ======================================================= */
+let timers = STAGES.map(() => ({
+  remaining: null,
+  endTime: null,
+  intervalId: null,
+  done: false
+}));
+let runAll = false;
+
+/* =======================================================
+   RENDER UI
+   ======================================================= */
+const $stages = document.getElementById('stages');
+
+function fmt(sec) {
+  sec = Math.max(0, Math.round(sec));
+  const m = Math.floor(sec / 60);
+  const s = sec % 60;
+  return String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+}
+
+function render() {
+  $stages.innerHTML = '';
+  STAGES.forEach((stage, i) => {
+    const t = timers[i];
+    const total = stage.minutes * 60;
+    const sisa = t.remaining === null ? total : t.remaining;
+    const pct = t.done ? 100 : (t.remaining === null ? 0 : ((total - t.remaining) / total) * 100);
+
+    const div = document.createElement('div');
+    div.className = 'stage' + (t.done ? ' done' : (t.remaining !== null ? ' active' : ''));
+    div.innerHTML = `
+      <div class="stage-header">
+        <div class="stage-title">${i+1}. ${stage.title}</div>
+        <div class="stage-time">${fmt(sisa)}</div>
+      </div>
+      <div class="stage-desc">${stage.desc}</div>
+      <div>${stage.dims.map(d => `<span class="stage-badge">${d}</span>`).join('')}</div>
+      <div class="progress"><div class="progress-bar" style="width:${pct}%"></div></div>
+      <div style="margin-top:10px; display:flex; gap:6px; flex-wrap:wrap;">
+        <button class="btn-primary" data-action="start" data-i="${i}" ${t.done ? 'disabled' : ''}>
+          ${t.remaining === null ? '▶ Mulai' : (t.done ? '✓ Selesai' : '⏸ Lanjut')}
+        </button>
+        <button class="btn-ghost" data-action="reset" data-i="${i}">⟲ Reset</button>
+      </div>
+    `;
+    $stages.appendChild(div);
+  });
+
+  $stages.querySelectorAll('button[data-action]').forEach(btn => {
+    btn.onclick = () => {
+      const i = parseInt(btn.dataset.i);
+      if (btn.dataset.action === 'start') startStage(i);
+      else resetStage(i);
+    };
+  });
+
+  updateGlobal();
+}
+
+function updateGlobal() {
+  let totalSisa = 0;
+  timers.forEach((t, i) => {
+    totalSisa += t.remaining === null ? STAGES[i].minutes * 60 : t.remaining;
+  });
+  document.getElementById('globalTime').textContent = fmt(totalSisa);
+  const pct = (totalSisa / TOTAL_SECONDS) * 100;
+  document.getElementById('globalBar').style.width = pct + '%';
+}
+
+/* =======================================================
+   LOGIKA TIMER
+   ======================================================= */
+function startStage(i) {
+  const t = timers[i];
+  if (t.done) return;
+
+  if (t.remaining === null) {
+    t.remaining = STAGES[i].minutes * 60;
+  }
+  t.endTime = Date.now() + t.remaining * 1000;
+
+  clearInterval(t.intervalId);
+  t.intervalId = setInterval(() => tick(i), 200);
+  render();
+}
+
+function tick(i) {
+  const t = timers[i];
+  const sisa = Math.max(0, (t.endTime - Date.now()) / 1000);
+  t.remaining = sisa;
+
+  const stageEl = $stages.children[i];
+  if (stageEl) {
+    stageEl.querySelector('.stage-time').textContent = fmt(sisa);
+    const total = STAGES[i].minutes * 60;
+    const pct = ((total - sisa) / total) * 100;
+    stageEl.querySelector('.progress-bar').style.width = pct + '%';
+    updateGlobal();
+  }
+
+  if (sisa <= 0) {
+    clearInterval(t.intervalId);
+    t.remaining = 0;
+    t.done = true;
+    notifyDone(STAGES[i].title);
+
+    if (runAll && i + 1 < STAGES.length) {
+      setTimeout(() => startStage(i + 1), 1500);
+    }
+    render();
+  }
+}
+
+function resetStage(i) {
+  const t = timers[i];
+  clearInterval(t.intervalId);
+  timers[i] = { remaining: null, endTime: null, intervalId: null, done: false };
+  if (runAll) runAll = false;
+  render();
+}
+
+function resetAll() {
+  timers.forEach(t => clearInterval(t.intervalId));
+  timers = STAGES.map(() => ({ remaining: null, endTime: null, intervalId: null, done: false }));
+  runAll = false;
+  render();
+}
+
+/* =======================================================
+   NOTIFIKASI + SUARA
+   ======================================================= */
+async function requestNotif() {
+  const status = document.getElementById('notifStatus');
+  if (!('Notification' in window)) {
+    status.textContent = 'Notif: browser tidak support';
+    status.className = 'notif-status err';
+    return;
+  }
+  if (Notification.permission === 'granted') {
+    status.textContent = 'Notif: ✅ aktif';
+    status.className = 'notif-status ok';
+    return;
+  }
+  const res = await Notification.requestPermission();
+  if (res === 'granted') {
+    status.textContent = 'Notif: ✅ aktif';
+    status.className = 'notif-status ok';
+  } else {
+    status.textContent = 'Notif: ❌ diblokir';
+    status.className = 'notif-status err';
+  }
+}
+
+function playBeep() {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const beep = (freq, start, dur) => {
+      const o = ctx.createOscillator();
+      const g = ctx.createGain();
+      o.frequency.value = freq;
+      o.connect(g); g.connect(ctx.destination);
+      g.gain.setValueAtTime(0.3, start);
+      g.gain.exponentialRampToValueAtTime(0.001, start + dur);
+      o.start(start); o.stop(start + dur);
+    };
+    beep(880, ctx.currentTime, 0.2);
+    beep(880, ctx.currentTime + 0.25, 0.2);
+    beep(1100, ctx.currentTime + 0.5, 0.4);
+  } catch(e) { console.warn('Audio gagal:', e); }
+}
+
+async function notifyDone(title) {
+  playBeep();
+  if (navigator.vibrate) navigator.vibrate([300, 100, 300, 100, 300]);
+
+  const body = `Tahap "${title}" selesai. Lanjut ke tahap berikutnya?`;
+
+  if ('serviceWorker' in navigator) {
+    try {
+      const reg = await navigator.serviceWorker.getRegistration();
+      if (reg) {
+        await reg.showNotification('⏰ Waktu Habis!', {
+          body, icon: 'https://cdn-icons-png.flaticon.com/512/2953/2953199.png',
+          vibrate: [300,100,300], tag: 'timer-rpp', requireInteraction: true
+        });
+        return;
+      }
+    } catch(e) {}
+  }
+
+  if (Notification.permission === 'granted') {
+    new Notification('⏰ Waktu Habis!', {
+      body, icon: 'https://cdn-icons-png.flaticon.com/512/2953/2953199.png'
+    });
+  }
+}
+
+/* =======================================================
+   SERVICE WORKER (inline)
+   ======================================================= */
+if ('serviceWorker' in navigator) {
+  const swCode = `
+    self.addEventListener('install', e => self.skipWaiting());
+    self.addEventListener('activate', e => e.waitUntil(self.clients.claim()));
+    self.addEventListener('notificationclick', e => {
+      e.notification.close();
+      e.waitUntil(clients.openWindow('/'));
+    });
+  `;
+  const blob = new Blob([swCode], { type: 'application/javascript' });
+  const swUrl = URL.createObjectURL(blob);
+  navigator.serviceWorker.register(swUrl).catch(() => {});
+}
+
+/* =======================================================
+   CONTROL BUTTONS
+   ======================================================= */
+document.getElementById('btnAll').onclick = () => {
+  resetAll();
+  runAll = true;
+  startStage(0);
+};
+
+document.getElementById('btnReset').onclick = resetAll;
+document.getElementById('btnNotif').onclick = requestNotif;
+
+if ('Notification' in window && Notification.permission === 'granted') {
+  document.getElementById('notifStatus').textContent = 'Notif: ✅ aktif';
+  document.getElementById('notifStatus').className = 'notif-status ok';
+}
+
+/* =======================================================
+   WAKE LOCK (layar tetap nyala saat timer berjalan)
+   ======================================================= */
+let wakeLock = null;
+async function keepScreenOn() {
+  try {
+    if ('wakeLock' in navigator) {
+      wakeLock = await navigator.wakeLock.request('screen');
+    }
+  } catch(e) {}
+}
+document.getElementById('btnAll').addEventListener('click', keepScreenOn);
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'visible' && !wakeLock) keepScreenOn();
+});
+
+/* =======================================================
+   INIT
+   ======================================================= */
+render();
+</script>
+</body>
+</html>
